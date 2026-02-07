@@ -91,5 +91,46 @@ print("yo")
 
 ###  ---------------------------- QUESTON 3 ----------------------------  ###
 
+'''
 
+Vehicle Type        Car     Bus     Heavy       Motorbike       Bike
+                                    Goods
+                                    Vehicle
+---------------------------------------------------------------------                                    
+8 - 9 AM            37      11      5           5               15
+9 - 10 AM           48      7       11          9               11
+10 - 11 AM          71      5       16          2               9
+11 - 12 PM          33      4       3           1               7
+
+
+
+'''
+
+species = (
+    "8 - 9 AM",
+    "9 - 10 AM",
+    "10 - 11 Am",
+    "11 - 12 PM",
+)
+weight_counts = {
+    "Car": np.array([37, 48, 71, 33]),        #re-do thse with the values of the vehicles passing overt the brider )_#_#)@
+    "Bus": np.array([11, 7, 5, 4]),
+    "Heavy Vehicle": np.array([5, 11, 16, 3]),
+    "Motorcycle": np.array([5, 9, 2, 1]),
+    "Bike": np.array([15, 11, 9, 7]),
+}
+
+width = 0.5
+
+fig, ax = plt.subplots()
+bottom = np.zeros(3)
+
+for boolean, weight_count in weight_counts.items():
+    p = ax.bar(species, weight_count, width, label=boolean, bottom=bottom)
+    bottom += weight_count
+
+ax.set_title("Bridege Crossings by Vehicle Type")
+ax.legend(loc="upper right")
+
+plt.show()
 
