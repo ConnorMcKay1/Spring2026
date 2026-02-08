@@ -1,7 +1,7 @@
 import matplotlib.pyplot as plt
 import numpy as np
 
-print("yo")
+print("Test 123!")
 
   ###  ---------------------------- QUESTON 1 ----------------------------  ###
 
@@ -22,19 +22,19 @@ print("yo")
 '''
 
 
-# Year1 = [832, 765, 873, 792, 791, 663, 834, 754, 806, 799, 773, 887]
-# Year2 = [932, 665, 573, 222, 111, 560, 734, 654, 126, 499, 503, 817]
-# Months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
+Year1 = [832, 765, 873, 792, 791, 663, 834, 754, 806, 799, 773, 887]
+Year2 = [932, 665, 573, 222, 111, 560, 734, 654, 126, 499, 503, 817]
+Months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
 
 
-# fig, ax = plt.subplots()      # single axis figure
-# ax.plot(Months, Year1, label="Year1", marker="d")  # plot line 1
-# ax.plot(Months, Year2, label="Year2", marker="d")  # this is for line 2
-# ax.tick_params(axis='x', labelrotation=90)
-# ax.set_xlabel("Months")
-# ax.set_ylabel("in $USD")
-# ax.legend()
-# plt.show()                 # shows figure
+fig, ax = plt.subplots()      # single axis figure
+ax.plot(Months, Year1, label="Year1", marker="d")  # plot line 1
+ax.plot(Months, Year2, label="Year2", marker="d")  # this is for line 2
+ax.tick_params(axis='x', labelrotation=90)
+ax.set_xlabel("Months")
+ax.set_ylabel("in $USD")
+ax.legend()
+plt.show()                 # shows figure
 
 
 
@@ -53,37 +53,37 @@ print("yo")
 
 #   --->> CODE BELOW
 
-# species = ("Toyota Rav-4 Hybrid", "Nissan Rouge", "Hyundai Tuscon Hybrid", "Honda CRV Hybrid")
-# Car_Details = {
-#     'MPG': (39.5, 33.5, 38, 39.5),
-#     'Range': (594, 485, 521, 602),
-#     'Price': (32.6, 29.98, 34.96, 34.65),
-# }
+species = ("Toyota Rav-4 Hybrid", "Nissan Rouge", "Hyundai Tuscon Hybrid", "Honda CRV Hybrid")
+Car_Details = {
+    'MPG': (39.5, 33.5, 38, 39.5),
+    'Range': (594, 485, 521, 602),
+    'Price': (32.6, 29.98, 34.96, 34.65),
+}
 
-# highest_overall = max(max(values) for values in Car_Details.values())   #this finds the highest values in the dict value
-# print(highest_overall)                                                  #and sets the y-axis as that value  (auto-adjust)
+highest_overall = max(max(values) for values in Car_Details.values())   #this finds the highest values in the dict value
+print(highest_overall)                                                  #and sets the y-axis as that value  (auto-adjust)
 
 
-# x = np.arange(len(species))
+x = np.arange(len(species))
 
-# width = 0.25  # the width of the bars
-# multiplier = 0
+width = 0.25  # the width of the bars
+multiplier = 0
 
-# fig, ax = plt.subplots(layout='constrained')
+fig, ax = plt.subplots(layout='constrained')
 
-# for attribute, measurement in Car_Details.items():
-#     offset = width * multiplier
-#     rects = ax.bar(x + offset, measurement, width, label=attribute)
-#     ax.bar_label(rects, padding=7)
-#     multiplier += 1
+for attribute, measurement in Car_Details.items():
+    offset = width * multiplier
+    rects = ax.bar(x + offset, measurement, width, label=attribute)
+    ax.bar_label(rects, padding=7)
+    multiplier += 1
 
-# ax.set_ylabel('value (MPG / Range / $USD)')
-# ax.set_title('Car Comparison')
-# ax.set_xticks(x + width, species)
-# ax.legend(loc='upper left', ncols=7)
-# ax.set_ylim(0, highest_overall)
+ax.set_ylabel('value (MPG / Range / $USD)')
+ax.set_title('Car Comparison')
+ax.set_xticks(x + width, species)
+ax.legend(loc='upper left', ncols=7)
+ax.set_ylim(0, highest_overall)
 
-# plt.show()
+plt.show()
 
 
 
@@ -106,36 +106,35 @@ Vehicle Type        Car     Bus     Heavy       Motorbike       Bike
 
 '''
 
-# species = (
-#     "8 - 9 AM",
-#     "9 - 10 AM",
-#     "10 - 11 Am",
-#     "11 - 12 PM",
-# )
-# weight_counts = {
-#     "Car": np.array([37, 48, 71, 33]),        
-#     "Bus": np.array([11, 7, 5, 4]),
-#     "Heavy Vehicle": np.array([5, 11, 16, 3]),
-#     "Motorcycle": np.array([5, 9, 2, 1]),
-#     "Bike": np.array([15, 11, 9, 7]),
-# }
+species = (
+    "8 - 9 AM",
+    "9 - 10 AM",
+    "10 - 11 Am",
+    "11 - 12 PM",
+)
+weight_counts = {
+    "Car": np.array([37, 48, 71, 33]),        
+    "Bus": np.array([11, 7, 5, 4]),
+    "Heavy Vehicle": np.array([5, 11, 16, 3]),
+    "Motorcycle": np.array([5, 9, 2, 1]),
+    "Bike": np.array([15, 11, 9, 7]),
+}
 
-# width = 0.5
+width = 0.5
 
-# fig, ax = plt.subplots()
-# bottom = np.zeros(4)            # Number of data points per category
+fig, ax = plt.subplots()
+bottom = np.zeros(4)            # Number of data points per category
 
-# for boolean, weight_count in weight_counts.items():
-#     p = ax.bar(species, weight_count, width, label=boolean, bottom=bottom)
-#     bottom += weight_count
+for boolean, weight_count in weight_counts.items():
+    p = ax.bar(species, weight_count, width, label=boolean, bottom=bottom)
+    bottom += weight_count
 
-# ax.set_title("Bridege Crossings by Vehicle Type")
-# #ax.legend(loc="upper right")
-# fig.legend(loc='outside upper right')
+ax.set_title("Bridege Crossings by Vehicle Type")
+#ax.legend(loc="upper right")
+fig.legend(loc='outside upper right')
 
 
-
-# plt.show()
+plt.show()
 
 
 
@@ -156,24 +155,48 @@ Country:     Yields (in lbs.) per acre:
 
 '''
 
-# fig, ax = plt.subplots()
+fig, ax = plt.subplots()
 
-# # Example data  5
-# countries = ('USA', 'Japan', 'India', 'Siam', 'Italy', 'Egypt')
-# y_pos = np.arange(len(countries))
+# Example data  5
+countries = ('USA', 'Japan', 'India', 'Siam', 'Italy', 'Egypt')
+y_pos = np.arange(len(countries))
 
-# performance = (1469, 2276, 728, 943, 2903, 1688)
+performance = (1469, 2276, 728, 943, 2903, 1688)
 
 
-# ax.barh(y_pos, performance, align='center')
-# ax.set_yticks(y_pos, labels=countries)
-# ax.invert_yaxis()  # labels read top-to-bottom
-# ax.set_xlabel('Yields (in lbs.) per acre')
-# ax.set_title('Rice Production By Country')
+ax.barh(y_pos, performance, align='center')
+ax.set_yticks(y_pos, labels=countries)
+ax.invert_yaxis()  # labels read top-to-bottom
+ax.set_xlabel('Yields (in lbs.) per acre')
+ax.set_title('Rice Production By Country')
 
-# plt.show()
+plt.show()
 
 
 
 
 ###  ---------------------------- QUESTON 5 ----------------------------  ###
+
+'''
+figures for the amount of cotton exported (in 1,000 bales) :
+
+Country: {USA, India, Egypt, Brazil, Argentina}
+Export: {6367, 2999, 1688, 650, 202}
+
+
+'''
+
+labels = 'USA', 'India', 'Egypt', 'Brazil', 'Argentina'
+sizes = [6367, 2999, 1688, 650, 202]
+
+explode = (0.09, 0, 0, 0, 0)
+
+fig, ax = plt.subplots()
+ax.pie(sizes, explode=explode, labels=labels, autopct='%1.1f%%',
+       textprops={'size': 'smaller'},
+       shadow=True, startangle=90)
+plt.show()
+
+
+
+
