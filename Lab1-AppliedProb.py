@@ -144,4 +144,36 @@ Vehicle Type        Car     Bus     Heavy       Motorbike       Bike
 ###  ---------------------------- QUESTON 4 ----------------------------  ###
 
 
+'''
+Country:     Yields (in lbs.) per acre:
+ USA          1469
+ Japan        2276
+ India        728
+ Siam         943
+ Italy        2903
+ Egypt        1688
 
+
+'''
+
+# fig, ax = plt.subplots()
+
+# # Example data  5
+# countries = ('USA', 'Japan', 'India', 'Siam', 'Italy', 'Egypt')
+# y_pos = np.arange(len(countries))
+
+# performance = (1469, 2276, 728, 943, 2903, 1688)
+
+
+# ax.barh(y_pos, performance, align='center')
+# ax.set_yticks(y_pos, labels=countries)
+# ax.invert_yaxis()  # labels read top-to-bottom
+# ax.set_xlabel('Yields (in lbs.) per acre')
+# ax.set_title('Rice Production By Country')
+
+# plt.show()
+
+
+
+
+###  ---------------------------- QUESTON 5 ----------------------------  ###
