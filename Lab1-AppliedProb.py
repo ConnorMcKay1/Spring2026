@@ -106,31 +106,42 @@ Vehicle Type        Car     Bus     Heavy       Motorbike       Bike
 
 '''
 
-species = (
-    "8 - 9 AM",
-    "9 - 10 AM",
-    "10 - 11 Am",
-    "11 - 12 PM",
-)
-weight_counts = {
-    "Car": np.array([37, 48, 71, 33]),        #re-do thse with the values of the vehicles passing overt the brider )_#_#)@
-    "Bus": np.array([11, 7, 5, 4]),
-    "Heavy Vehicle": np.array([5, 11, 16, 3]),
-    "Motorcycle": np.array([5, 9, 2, 1]),
-    "Bike": np.array([15, 11, 9, 7]),
-}
+# species = (
+#     "8 - 9 AM",
+#     "9 - 10 AM",
+#     "10 - 11 Am",
+#     "11 - 12 PM",
+# )
+# weight_counts = {
+#     "Car": np.array([37, 48, 71, 33]),        
+#     "Bus": np.array([11, 7, 5, 4]),
+#     "Heavy Vehicle": np.array([5, 11, 16, 3]),
+#     "Motorcycle": np.array([5, 9, 2, 1]),
+#     "Bike": np.array([15, 11, 9, 7]),
+# }
 
-width = 0.5
+# width = 0.5
 
-fig, ax = plt.subplots()
-bottom = np.zeros(3)
+# fig, ax = plt.subplots()
+# bottom = np.zeros(4)            # Number of data points per category
 
-for boolean, weight_count in weight_counts.items():
-    p = ax.bar(species, weight_count, width, label=boolean, bottom=bottom)
-    bottom += weight_count
+# for boolean, weight_count in weight_counts.items():
+#     p = ax.bar(species, weight_count, width, label=boolean, bottom=bottom)
+#     bottom += weight_count
 
-ax.set_title("Bridege Crossings by Vehicle Type")
-ax.legend(loc="upper right")
+# ax.set_title("Bridege Crossings by Vehicle Type")
+# #ax.legend(loc="upper right")
+# fig.legend(loc='outside upper right')
 
-plt.show()
+
+
+# plt.show()
+
+
+
+
+
+###  ---------------------------- QUESTON 4 ----------------------------  ###
+
+
 
