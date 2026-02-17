@@ -77,7 +77,7 @@ def ClassWidth(values, K):
     return classwidth
 
 classwidth = ClassWidth(values, K)
-print(classwidth)
+print("Class Width:", classwidth)
 
 
 
