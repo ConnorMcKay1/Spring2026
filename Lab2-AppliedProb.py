@@ -200,9 +200,6 @@ plt.show()     # Same deal with the Ojive
 '''
 FINNISH THE CALCULATIONS BY FINDING THE INTERSECTION OF THE 2 OJIVE LINES
 
-Intersection of the 2 ojives @ the segment that they intersect  (x,y) = (80.61,49.91)
-
-So the computed median being 81.0 could be attributed the rounding of floats
 '''
     # MEDIAN
 
