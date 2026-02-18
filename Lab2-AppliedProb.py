@@ -196,7 +196,7 @@ plt.show()     # Same deal with the Ojive
 
 
 #   ***-----------------------QUESTION 4-----------------------***
-
+    
 '''
 FINNISH THE CALCULATIONS BY FINDING THE INTERSECTION OF THE 2 OJIVE LINES
 
@@ -204,7 +204,7 @@ Intersection of the 2 ojives @ the segment that they intersect  (x,y) = (80.61,4
 
 So the computed median being 81.0 could be attributed the rounding of floats
 '''
-
+    # MEDIAN
 
 medianValue = np.median(values)
 
@@ -220,6 +220,7 @@ print("Mode(s):", modeValues, "with frequency:", modeCount, "\n")
 
 
 #   ***-----------------------QUESTION 5-----------------------***
+    # ARITHMETIC MEAN / GROUPED MEAN  DIFFERENCE
 arithmeticMean = np.mean(values)
 print("Exact Arithmetic Mean:", arithmeticMean)
 
@@ -235,6 +236,7 @@ print("Difference (Arithmetic Mean - Grouped Mean):", difference, '\n')
 
 
 #   ***-----------------------QUESTION 6-----------------------***
+    # GEOMETRIC MEAN
 geometricMean = gmean(values)
 print("Geometric Mean:", geometricMean)
 
@@ -243,8 +245,8 @@ print("Geometric Mean:", geometricMean)
 
 
 #   ***-----------------------QUESTION 7-----------------------***
-harmonic_mean = len(values) / np.sum(1/np.array(values))
-print("Harmonic Mean:", harmonic_mean)
+harmonicMean = len(values) / np.sum(1/np.array(values))
+print("Harmonic Mean:", harmonicMean)
 
 
 
