@@ -1,4 +1,9 @@
 import math
+import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+from scipy import stats
+from scipy.stats import gmean
 
 
 print("AUKUS")
@@ -22,7 +27,7 @@ with breast cancer in a city hospital:
 57, 38, 48, 69, 86, 81, 72, 65, 53, 41}
 
 
---> Write a small program to compute the average value of the dataset and the median.
+$S--> Write a small program to compute the average value of the dataset and the median.
 --> Construct a frequency distribution of the dataset using Sturges's rule for the number of
 classes and rounding up the obtained expression.
 --> Draw histogram of the frequency distribution and the frequency polygon.
@@ -34,17 +39,11 @@ the absolute value of the difference of the two)?
 
 '''
 
-# dataSet = [36, 59, 78, 35, 53, 44, 19, 88, 39, 47,
-# 44, 62, 31, 56, 25, 71, 66, 61, 50, 77,
-# 61, 58, 73, 52, 67, 49, 33, 70, 55, 64,
-# 49, 67, 41, 56, 75, 66, 37, 47, 84, 73,
-# 57, 38, 48, 69, 86, 81, 72, 65, 53, 41]
-
 UnSortedDataSet = [36, 59, 78, 35, 53, 44, 19, 88, 39, 47,
 44, 62, 31, 56, 25, 71, 66, 61, 50, 77,
 61, 58, 73, 52, 67, 49, 33, 70, 55, 64,
 49, 67, 41, 56, 75, 66, 37, 47, 84, 73,
-57, 38, 48, 69, 86, 81, 72, 65, 53, 41, 69, 69, 69]
+57, 38, 48, 69, 86, 81, 72, 65, 53, 41]
 
 
 
@@ -87,8 +86,82 @@ def Median(dataSet):
         print(f"Number of values: {N} , Upper/Lower Index {math.ceil(medianIndex)} , {math.floor(medianIndex)} , Upper/Lower Element: {upper} , {lower} , Median: {median}")
 
 
-
+'''
 Median(dataSet)
+'''
+
+
+def FrequencyDistribution(dataSet):
+    N = len(dataSet)
+
+    # Number of classes
+    K = math.ceil(1 + 3.322*(math.log(N)))
+
+    # Range
+    R = max(dataSet) - min(dataSet)
+
+    # Class size
+    C = math.ceil(R/K)
+
+    return C
+
+
+
+
+classwidth = FrequencyDistribution(dataSet)
+
+
+    # CLASS MIDPOINT
+    # create a list of the midpoints?
+    # midPoint = lowBound + (K - 1/2)*classWidth
+def ClassMidpoints(values, classwidth, K):
+    L = 1   # local counter to represent the number of classes
+    lowerClassLimit = min(values) - .5
+    midPoints = []
+    while L <= K:
+        midPoint = lowerClassLimit + (L - 1/2)*classwidth
+        midPoints.append(midPoint)
+        L +=1
+    return midPoints
+
+midPoints = ClassMidpoints(values, classwidth, K)
+print(midPoints)
+
+
+
+    #CLASS BOUNDARIES
+def ClassBoundaries(values, classwidth, K):
+    lowerBoundary = min(values) - 0.5
+    return [lowerBoundary + i * classwidth for i in range(K + 1)]
+
+print(ClassBoundaries(values, classwidth, K), "\n")
+
+
+
+    # FREQUENCY TABLE
+bins = ClassBoundaries(values, classwidth, K)
+frequencies, _ = np.histogram(values, bins=bins)
+
+class_labels = [
+    f"{bins[i]} - {bins[i+1]}"
+    for i in range(len(bins)-1)]
+
+df = pd.DataFrame({"Class Interval": class_labels, "Frequency": frequencies})
+
+fig, ax = plt.subplots()
+ax.axis("off")
+
+table = pd.plotting.table(ax, df, loc="center", cellLoc="center", colWidths=[0.3, 0.2])
+
+table.auto_set_font_size(False)
+table.set_fontsize(10)
+table.scale(1.2, 1.2)
+
+plt.show()         # Just un-comment to display the table
+
+
+
+
 
 
 
