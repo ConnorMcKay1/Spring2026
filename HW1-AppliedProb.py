@@ -40,16 +40,17 @@ the absolute value of the difference of the two)?
 # 49, 67, 41, 56, 75, 66, 37, 47, 84, 73,
 # 57, 38, 48, 69, 86, 81, 72, 65, 53, 41]
 
-dataSet = [36, 59, 78, 35, 53, 44, 19, 88, 39, 47,
+UnSortedDataSet = [36, 59, 78, 35, 53, 44, 19, 88, 39, 47,
 44, 62, 31, 56, 25, 71, 66, 61, 50, 77,
 61, 58, 73, 52, 67, 49, 33, 70, 55, 64,
 49, 67, 41, 56, 75, 66, 37, 47, 84, 73,
-57, 38, 48, 69, 86, 81, 72, 65, 53, 41, 69]
+57, 38, 48, 69, 86, 81, 72, 65, 53, 41, 69, 69, 69]
 
 
 
 # list of ages in ascending order
-print(sorted(dataSet))
+dataSet = sorted(UnSortedDataSet)
+print(dataSet)
 
 
 
@@ -65,16 +66,27 @@ print(arithmeticMean)
 '''
 
 
-
 # finds the Median of the dataSet
 def Median(dataSet):
-    numberOfValues = len(dataSet)
-    print(numberOfValues)
+    N = len(dataSet)
+    print(N)
 
-    if numberOfValues % 2 != 0:
-        print(f"{numberOfValues} is an odd number.")
+    if N % 2 != 0:
+        # if N is odd
+        medianIndex = int((N+1)/2)
+        median = dataSet[medianIndex-1]
+        print(f"Number of values: {N} , Median: {median}")
     else:
-        print(f"{numberOfValues} is an even number.")
+        # if N is even
+        medianIndex = ((N/2)+((N/2)+1))/2
+        upper = dataSet[math.ceil(medianIndex)]
+        lower = dataSet[math.floor(medianIndex)]
+
+        median = ((upper-1) + (lower-1))/2
+        
+        print(f"Number of values: {N} , Upper/Lower Index {math.ceil(medianIndex)} , {math.floor(medianIndex)} , Upper/Lower Element: {upper} , {lower} , Median: {median}")
+
+
 
 Median(dataSet)
 
