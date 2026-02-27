@@ -35,7 +35,8 @@ classes and rounding up the obtained expression.
 --> Illustrate how you would find the median of the frequency distribution you constructed.
 How does it compare with the true median that you get from the above dataset (provide
 the absolute value of the difference of the two)?
---> Compute the arithmetic average of the frequency distribution using class marks and compare the value with the true average of the dataset you computed with your program.
+--> Compute the arithmetic average of the frequency distribution using class marks and 
+compare the value with the true average of the dataset you computed with your program.
 
 '''
 
@@ -101,14 +102,18 @@ def FrequencyDistribution(dataSet):
     R = max(dataSet) - min(dataSet)
 
     # Class size
-    C = math.ceil(R/K)
+    classwidth = math.ceil(R/K)
 
-    return C
+    return N, K, classwidth
+
+N, K, classwidth = FrequencyDistribution(dataSet)
+
+print(f'length of N: {N}, number of classes {K}, class size {classwidth}')
 
 
 
 
-classwidth = FrequencyDistribution(dataSet)
+##------------------------ CODE BELOW FROM LAB-2 --------------------------------
 
 
     # CLASS MIDPOINT
@@ -124,7 +129,7 @@ def ClassMidpoints(values, classwidth, K):
         L +=1
     return midPoints
 
-midPoints = ClassMidpoints(values, classwidth, K)
+midPoints = ClassMidpoints(dataSet, classwidth, K)
 print(midPoints)
 
 
@@ -134,13 +139,13 @@ def ClassBoundaries(values, classwidth, K):
     lowerBoundary = min(values) - 0.5
     return [lowerBoundary + i * classwidth for i in range(K + 1)]
 
-print(ClassBoundaries(values, classwidth, K), "\n")
+print(ClassBoundaries(dataSet, classwidth, K), "\n")
 
 
 
     # FREQUENCY TABLE
-bins = ClassBoundaries(values, classwidth, K)
-frequencies, _ = np.histogram(values, bins=bins)
+bins = ClassBoundaries(dataSet, classwidth, K)
+frequencies, _ = np.histogram(dataSet, bins=bins)
 
 class_labels = [
     f"{bins[i]} - {bins[i+1]}"
@@ -161,7 +166,4 @@ plt.show()         # Just un-comment to display the table
 
 
 
-
-
-
-
+##------------------ **END OF ** CODE FROM LAB-2 ----------------------------
