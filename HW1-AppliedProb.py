@@ -55,6 +55,7 @@ print(dataSet)
 
 
 # finds the Arithmetic Mean:  (sum of values)/(N)
+# This is the Average of the dataSet (not of the Freq. Dist.)
 def ArithmeticMean(dataSet):
     total = sum(dataSet)
     print(total)
@@ -162,8 +163,29 @@ table.auto_set_font_size(False)
 table.set_fontsize(10)
 table.scale(1.2, 1.2)
 
-plt.show()         # Just un-comment to display the table
+#plt.show()         # Just un-comment to display the table
 
 
 
 ##------------------ **END OF ** CODE FROM LAB-2 ----------------------------
+
+
+
+    # --> replace the dataSet with the Frequency List
+def FrequencyArithmeticMean(frequencies):
+    print(frequencies)
+    total = sum(frequencies)
+    print(total)
+    freqArithmeticMean = total/len(frequencies)
+    print(freqArithmeticMean)
+
+FrequencyArithmeticMean(frequencies)
+
+
+
+
+
+
+
+
+
