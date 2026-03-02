@@ -18,31 +18,148 @@ EDUCATION LEVEL (drop down), UPLOAD RESUME/CV/DOCUMENTS (file field), SUBMIT, RE
 
 
 --> 
-
-
-
-
 <!DOCTYPE html>
-
 <html>
 
-    <head>
+<head>
+    <title>A Cool HTML Form</title>
 
-        <title>
-            A Cool HTML Form
-        </title>
+    <style>
+        body {
+            background-color: cornflowerblue;
+            font-family: Arial, sans-serif;
+        }
 
-    </head>
+        h4 {
+            text-align: center;
+        }
 
-    <body>
+        .form-container {
+            background-color:darkcyan;
+            padding: 40px 0;
+        }
 
-        <h4>
-            HELLO?!
-        </h4>
+        form {
+            background-color:lightsteelblue; 
+            width: 600px;
+            margin: 0 auto;
+        }
 
-    </body>
+        .form-row {
+            display: grid;
+            grid-template-columns: 180px 1fr;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        label {
+            text-align: right;
+            padding-right: 15px;
+        }
+
+        .checkbox-group,
+        .radio-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .full-width {
+            grid-column: 1 / -1;
+        }
+
+        textarea {
+            width: 100%;
+        }
+
+        .buttons {
+            text-align: center;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+
+<body>
 
 
+    <h4>Technology Intern</h4>
 
+    <div class="form-container">
+    <form action="#" method="post" enctype="multipart/form-data">
+
+        <div class="form-row">
+            <label for="fname">First name:</label>
+            <input type="text" placeholder="Enter your first name" id="fname" name="fname">
+        </div>
+
+        <div class="form-row">
+            <label for="lname">Last name:</label>
+            <input type="text" placeholder="Enter your last name" id="lname" name="lname">
+        </div>
+
+        <div class="form-row">
+            <label for="email">Email:</label>
+            <input type="email" placeholder="Enter your email address" id="email" name="email">
+        </div>
+
+        <div class="form-row">
+            <label for="password">Password:</label>
+            <input type="password" placeholder= "Password must contain a special character (e.g., #$ &*_/@)" id="password" name="password">
+        </div>
+
+        <div class="form-row">
+            <label>Driver's License:</label>
+            <div class="radio-group">
+                <label><input type="radio" name="license" value="yes"> Yes</label>
+                <label><input type="radio" name="license" value="no"> No</label>
+            </div>
+        </div>
+
+        <div class="form-row">
+            <label>Areas of Interest:</label>
+            <div class="checkbox-group">
+                <label><input type="checkbox" name="field" value="Engineering"> Engineering</label>
+                <label><input type="checkbox" name="field" value="Mathematics"> Mathematics</label>
+                <label><input type="checkbox" name="field" value="Biology"> Biology</label>
+                <label><input type="checkbox" name="field" value="Computer Science"> Computer Science</label>
+                <label><input type="checkbox" name="field" value="Climate Change"> Climate Change</label>
+                <label><input type="checkbox" name="field" value="Medicine"> Medicine</label>
+                <label><input type="checkbox" name="field" value="Physics"> Physics</label>
+                <label><input type="checkbox" name="field" value="Social Science"> Social Science</label>
+                <label><input type="checkbox" name="field" value="Astrophysics"> Astrophysics</label>
+                <label><input type="checkbox" name="field" value="Chemistry"> Chemistry</label>
+            </div>
+        </div>
+
+        <div class="form-row">
+            <label for="education">Education Level:</label>
+            <select name="education" id="education">
+                <option value="Bachelor's">Bachelor's</option>
+                <option value="Master's">Master's</option>
+                <option value="Doctoral/PhD">Doctoral/PhD</option>
+                <option value="Professional">Professional</option>
+            </select>
+        </div>
+
+        <div class="form-row">
+            <label for="file">Resume, CV, Documents:</label>
+            <input type="file" id="file" name="file">
+        </div>
+
+        <div class="form-row">
+            <label for="message">Bio / How did you find us?:</label>
+            <textarea placeholder="Tell us a bit about yourself, or how you heard about us" id="message" name="message" rows="4"></textarea>
+        </div>
+
+        <div class="buttons">
+            <input type="submit" value="Submit Application">
+            <input type="reset" value="Reset Application">
+        </div>
+
+    </form>
+
+    </div>
+
+</body>
 
 </html>
