@@ -1,0 +1,54 @@
+/* This the stylesheet for the library website concept */
+
+
+/* backgrounds for pages */
+body.home{
+    background-image: url('https://i0.wp.com/housecrazysarah.life/wp-content/uploads/2020/02/Gladstones-Library6.jpg?fit=1400%2C934&ssl=1');
+    background-size: cover;
+}
+
+body.nonfiction {
+    background-image: url('https://whyathens.com/wp-content/uploads/2015/08/Acropolis-Athens-Parthenon-Information-1024x684.jpg');
+    background-size: cover;
+    background-color: red;
+}
+
+body.fiction {
+    background-image: url('');
+    background-size: cover;
+}
+
+body.poetry {
+    background-image: url('');
+    background-size: cover;
+}
+
+body.drama {
+    background-image: url('');
+    background-size: cover;
+}
+
+
+
+h1 {
+    color: khaki;
+    font-family: Arial;
+    text-decoration: underline;
+    text-align: center;
+
+}
+
+.linklist a{
+    display: block;
+    margin-bottom: 1px;
+    margin-left: 120px;
+    color:rgb(201, 128, 55);
+    font-style: italic;
+    font-size: 20px;
+}
+
+.thumbnail {
+    margin-left: 20px;
+}
+
+
