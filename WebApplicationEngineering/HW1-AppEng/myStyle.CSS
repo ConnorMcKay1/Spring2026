@@ -1,4 +1,7 @@
-/* This the stylesheet for the library website concept */
+/* This the stylesheet for the library website concept
+
+https://www.prosourcefit.com/products/multi-grip-pull-up-bar?srsltid=AfmBOorjNlq9ZgTqLt6eOrw1L_Bp0dYttle0xyeO9pBzNkWjmU1_oSIe
+*/
 
 
 /* backgrounds for pages */
@@ -10,22 +13,28 @@ body.home{
 body.nonfiction {
     background-image: url('https://whyathens.com/wp-content/uploads/2015/08/Acropolis-Athens-Parthenon-Information-1024x684.jpg');
     background-size: cover;
-    background-color: red;
+    background-position: 20% 20%;
+    background-color: white;
 }
 
 body.fiction {
-    background-image: url('');
+    background-image: url('https://miro.medium.com/v2/1*DMlKhqsvru2OMfHkBBBeUw.jpeg');
     background-size: cover;
+    background-position: 20% 5%;
+    background-color: white;
 }
 
 body.poetry {
-    background-image: url('');
+    background-image: url('https://wallpapers.com/images/hd/japan-cherry-blossom-7680-x-4320-4ne2279mpwqtbyee.jpg');
     background-size: cover;
+    background-color: white;
 }
 
 body.drama {
-    background-image: url('');
+    background-image: url('https://www.foodandwine.com/thmb/AkZFMeikZ_1lXrMIEDlLgW0-lgs=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/This-Whisky-Tasting-Room-in-the-Scottish-Highlands-Has-Over-400-Rare-Bottles-From-Around-the-World-FT-BLOG0323-88bf784c0947420fb39196f2b7111905.jpg');
     background-size: cover;
+    background-position: 20% 20%;
+    background-color: white;
 }
 
 
@@ -40,15 +49,23 @@ h1 {
 
 .linklist a{
     display: block;
-    margin-bottom: 1px;
+    margin-bottom: 15px;
     margin-left: 120px;
-    color:rgb(201, 128, 55);
+    color:rgb(238, 197, 17);
     font-style: italic;
-    font-size: 20px;
+    font-size: 30px;
 }
 
-.thumbnail {
+#thumbnail1 {
     margin-left: 20px;
 }
 
+.thumbnail {
+    margin-left: 40px;
+}
 
+.genre {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
