@@ -47,6 +47,30 @@ h1 {
 
 }
 
+.storeLinks {
+    margin-left: 40px;
+    margin-top: 60px;
+}
+
+.description {
+    color:firebrick;
+    font-size: 30px;
+    font-style: bold;
+}
+
+#description {
+    color:rgb(212, 142, 226);
+    font-size: 30px;
+    font-style: bold;
+}
+
+.returnButton {
+    position: fixed;
+    bottom: 20px;
+    left: 46%;     
+}
+
+
 .linklist a{
     display: block;
     margin-bottom: 15px;
@@ -69,3 +93,7 @@ h1 {
     align-items: center;
     gap: 10px;
 }
+
+
+
+
