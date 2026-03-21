@@ -55,47 +55,48 @@ print(values)
 print(K)
 
 
-
-
 #   ***-----------------------QUESTION 1-----------------------***
 
-#CLASS WIDTH
+# CLASS WIDTH
 def ClassWidth(values, K):
     classwidth = math.ceil((max(values) - min(values)) / K)
     return classwidth
 
+
 classwidth = ClassWidth(values, K)
 
 
-#CLASS BOUNDARIES
+# CLASS BOUNDARIES
 def ClassBoundaries(values, classwidth, K):
     lowerBoundary = min(values) - 0.5
     return [lowerBoundary + i * classwidth for i in range(K + 1)]
 
-#print(ClassBoundaries(values, classwidth, K), "\n")
 
-
-#FREQUENCY TABLE PLOT
-bins = ClassBoundaries(values, classwidth, K)
+bins = ClassBoundaries(values, classwidth, K)   # this is used for both the table and the graph
 frequencies, _ = np.histogram(values, bins=bins)
 
-class_labels = [
-    f"{bins[i]} - {bins[i+1]}"
-    for i in range(len(bins)-1)]
+# FREQUENCY TABLE PLOT
 
-df = pd.DataFrame({"Class Interval": class_labels, "Frequency": frequencies})
+def FrequencyTable():
+    class_labels = [
+        f"{bins[i]} - {bins[i+1]}"
+        for i in range(len(bins)-1)]
 
-fig, ax = plt.subplots()
-ax.axis("off")
+    df = pd.DataFrame({"Class Interval": class_labels, "Frequency": frequencies})
 
-table = pd.plotting.table(ax, df, loc="center", cellLoc="center", colWidths=[0.3, 0.2])
+    fig, ax = plt.subplots()
+    ax.axis("off")
 
-table.auto_set_font_size(False)
-table.set_fontsize(10)
-table.scale(1.2, 1.2)
+    table = pd.plotting.table(ax, df, loc="center",
+                          cellLoc="center", colWidths=[0.3, 0.2])
 
-#plt.show()         # all ya have to do is un-comment to show Frequency Table
+    table.auto_set_font_size(False)
+    table.set_fontsize(10)
+    table.scale(1.2, 1.2)
 
+    plt.show()
+
+FrequencyTable()     # all ya have to do is un-comment to show Frequency Table
 
 
 
@@ -110,28 +111,34 @@ def ClassMidpoints(values, classwidth, K):
     while L <= K:
         midPoint = lowerClassLimit + (L - 1/2)*classwidth
         midPoints.append(midPoint)
-        L +=1
+        L += 1
     return midPoints
 
-midPoints = ClassMidpoints(values, classwidth, K)
-#print(midPoints)
 
+def Histogram():
 
-plt.hist(values, bins=bins, edgecolor='black', alpha=0.6)
+    midPoints = ClassMidpoints(values, classwidth, K)
+    # print(midPoints)
 
-plt.xlabel("Class Intervals")
-plt.ylabel("Frequency/Tallies")
-plt.title("Histogram w/ Frequency Polygon")
-plt.xticks(bins)
+    plt.hist(values, bins=bins, edgecolor='black', alpha=0.6)
 
-x_poly = [bins[0]] + midPoints + [bins[-1]]     # Polygon Line and bringing it to the x-axis
-y_poly = [0] + list(frequencies) + [0]
-plt.plot(x_poly, y_poly, marker='o', color='red', linestyle='-')
+    plt.xlabel("Class Intervals")
+    plt.ylabel("Frequency/Tallies")
+    plt.title("Histogram w/ Frequency Polygon")
+    plt.xticks(bins)
 
-plt.show()
+    # Polygon Line and bringing it to the x-axis
+    x_poly = [bins[0]] + midPoints + [bins[-1]]
+    y_poly = [0] + list(frequencies) + [0]
+    plt.plot(x_poly, y_poly, marker='o', color='red', linestyle='-')
 
+    plt.show()
+    
+Histogram()
 
+'''
+The distribution is symetrical and is centered around Zero, as is expected for a Gaussian  distribution.
+Even though a random number generator is used, / / / . . . .
 
-
-
+'''
 
