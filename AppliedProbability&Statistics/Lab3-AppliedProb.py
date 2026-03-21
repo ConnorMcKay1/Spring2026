@@ -1,6 +1,9 @@
 import math
 import numpy as np
 import scipy
+import matplotlib
+import matplotlib.pyplot as plt
+import pandas as pd
 
 '''
 Instruction: For this assignment, you will generate datasets by drawing samples
@@ -36,17 +39,96 @@ Standard Deviation, Coefficient of Variation.
 • Increase the number of classes by a factor of 10 and comment on how the
 distribution changes.
 
-
 '''
 
+n = 2000
+
+# 2000 values
+values = np.random.randn(n)
 
 
-sampleList = np.random.randn(2000)
+# number of class
+K = math.ceil(3.322*(math.log10(n)))
+
+print(values)
+
+print(K)
 
 
-print(len(sampleList))
 
-print(sampleList)
+
+#   ***-----------------------QUESTION 1-----------------------***
+
+#CLASS WIDTH
+def ClassWidth(values, K):
+    classwidth = math.ceil((max(values) - min(values)) / K)
+    return classwidth
+
+classwidth = ClassWidth(values, K)
+
+
+#CLASS BOUNDARIES
+def ClassBoundaries(values, classwidth, K):
+    lowerBoundary = min(values) - 0.5
+    return [lowerBoundary + i * classwidth for i in range(K + 1)]
+
+#print(ClassBoundaries(values, classwidth, K), "\n")
+
+
+#FREQUENCY TABLE PLOT
+bins = ClassBoundaries(values, classwidth, K)
+frequencies, _ = np.histogram(values, bins=bins)
+
+class_labels = [
+    f"{bins[i]} - {bins[i+1]}"
+    for i in range(len(bins)-1)]
+
+df = pd.DataFrame({"Class Interval": class_labels, "Frequency": frequencies})
+
+fig, ax = plt.subplots()
+ax.axis("off")
+
+table = pd.plotting.table(ax, df, loc="center", cellLoc="center", colWidths=[0.3, 0.2])
+
+table.auto_set_font_size(False)
+table.set_fontsize(10)
+table.scale(1.2, 1.2)
+
+#plt.show()         # all ya have to do is un-comment to show Frequency Table
+
+
+
+
+#   ***-----------------------QUESTION 2-----------------------***
+
+# HISTOGRAM AND FREQUENCY POLYGON
+
+def ClassMidpoints(values, classwidth, K):
+    L = 1   # local counter to represent the number of classes
+    lowerClassLimit = min(values) - .5
+    midPoints = []
+    while L <= K:
+        midPoint = lowerClassLimit + (L - 1/2)*classwidth
+        midPoints.append(midPoint)
+        L +=1
+    return midPoints
+
+midPoints = ClassMidpoints(values, classwidth, K)
+#print(midPoints)
+
+
+plt.hist(values, bins=bins, edgecolor='black', alpha=0.6)
+
+plt.xlabel("Class Intervals")
+plt.ylabel("Frequency/Tallies")
+plt.title("Histogram w/ Frequency Polygon")
+plt.xticks(bins)
+
+x_poly = [bins[0]] + midPoints + [bins[-1]]     # Polygon Line and bringing it to the x-axis
+y_poly = [0] + list(frequencies) + [0]
+plt.plot(x_poly, y_poly, marker='o', color='red', linestyle='-')
+
+plt.show()
 
 
 
