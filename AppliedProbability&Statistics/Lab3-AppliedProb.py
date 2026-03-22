@@ -96,7 +96,7 @@ def FrequencyTable():
 
     plt.show()
 
-FrequencyTable()     # all ya have to do is un-comment to show Frequency Table
+#FrequencyTable()     # all ya have to do is un-comment to show Frequency Table
 
 
 
@@ -134,11 +134,68 @@ def Histogram():
 
     plt.show()
     
-Histogram()
+#Histogram()    # same deal with the Histogram
 
 '''
 The distribution is symetrical and is centered around Zero, as is expected for a Gaussian  distribution.
 Even though a random number generator is used, / / / . . . .
 
 '''
+
+
+#   ***-----------------------QUESTION 3-----------------------***
+
+# OGIVE (LESS & MORE THAN)
+
+def Ogive():
+    lessThan = []
+    lessTotal = 0
+    for f in frequencies:
+        lessTotal += f
+        lessThan.append(lessTotal)
+
+
+    moreThan = []
+    moreTotal = 0
+    for f in reversed(frequencies):
+        moreTotal += f
+        moreThan.append(moreTotal)
+    moreThan.reverse()      
+
+    upper_bounds = bins[1:]  
+    lower_bounds = bins[:-1]
+
+
+    plt.figure(figsize=(8,5))
+
+    plt.plot(upper_bounds, lessThan, marker='o', color='blue', linestyle='-', label='Less-than')
+    plt.plot(lower_bounds, moreThan, marker='s', color='red', linestyle='--', label='More-than')
+
+    plt.xlabel('Value')
+    plt.ylabel('Cumulative Frequency')
+    plt.title('Less-than and More-than Ogives')
+    plt.legend()
+    plt.grid(True)
+
+    plt.show()
+    
+    return lessThan, moreThan
+    
+#Ogive()    # allas with the Ogive
+
+lessThan, moreThan = Ogive()
+
+def OgiveIntersection(lessThan, moreThan):
+    print()
+    
+    lessAray = np.array(lessThan)
+    moreArray = np.array(moreThan)
+    
+    
+    intersection = np.where(lessAray == moreArray)
+    print(intersection)
+
+
+OgiveIntersection(lessThan, moreThan)
+
 
