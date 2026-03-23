@@ -1,9 +1,12 @@
 import math
 import numpy as np
 import scipy
+from scipy.interpolate import interp1d
+from scipy.optimize import brentq
 import matplotlib
 import matplotlib.pyplot as plt
 import pandas as pd
+import sympy
 
 '''
 Instruction: For this assignment, you will generate datasets by drawing samples
@@ -177,7 +180,7 @@ def Ogive():
     plt.legend()
     plt.grid(True)
 
-    plt.show()
+    #plt.show()     # just so it doesn't pop-up
     
     return lessThan, moreThan
     
@@ -185,17 +188,131 @@ def Ogive():
 
 lessThan, moreThan = Ogive()
 
+
 def OgiveIntersection(lessThan, moreThan):
+    print("INSIDE THE OGIVE MODULE")
+    #print("LESS THAN: ", lessThan, "\n")
     print()
+    #print("MORE THAN: ", moreThan)
     
-    lessAray = np.array(lessThan)
+    
+    # turns the lessThan/moreThan List into a Numpy Array
+    lessArray = np.array(lessThan)
     moreArray = np.array(moreThan)
-    
-    
-    intersection = np.where(lessAray == moreArray)
-    print(intersection)
+    print("LESS THAN NUMPY: ", lessArray)
+    print("MORE THAN NUMPY: ", moreArray)
+
+    midPoints = ClassMidpoints(values, classwidth, K)
+    x = np.array(midPoints)
+
+
+    moreArray_shifted = np.roll(moreArray, -1)
+    moreArray_shifted[-1] = 0
+
+    lessLinear = interp1d(x, lessArray)
+    moreLinear = interp1d(x, moreArray_shifted)
+
+    def Difference(x):
+        return lessLinear(x) - moreLinear(x)
+
+    # find crossing interval
+    diff = lessArray - moreArray
+    # finds the index where the curves intersect (sign change)
+    index = np.where(np.diff(np.sign(diff)) != 0)[0][0]
+
+    intersection = brentq(Difference, x[index-1], x[index+2])
+    print("X value at intersection: " ,intersection)
+        
+        
+    yValue = lessLinear(intersection)   # or g_interp(x_cross), same value
+    print("Y value at intersection:", yValue)
 
 
 OgiveIntersection(lessThan, moreThan)
+
+
+#plt.show()     # this was put here becuase I had to look at the graph after the data was outputted to terminal to check for accuracy
+
+
+#   ***-----------------------QUESTION 4-----------------------***
+
+
+def CompareMeans(values, frequencies, bins, classwidth, K):
+    
+    print("MEAN COMPARISON \n")
+
+    # mean
+    mean_raw = np.mean(values)
+    print("Mean from data:", mean_raw)
+
+    # mean from frequency distribution
+    midPoints = ClassMidpoints(values, classwidth, K)
+    midPoints = np.array(midPoints)
+
+    frequencies_array = np.array(frequencies)
+
+    mean_grouped = np.sum(midPoints * frequencies_array) / np.sum(frequencies_array)
+    print("Mean from frequency distribution:", mean_grouped)
+
+    # difference between freq mean and data mean
+    difference = abs(mean_grouped - mean_raw)
+    print("Difference:", difference)
+
+
+
+#CompareMeans(values, frequencies, bins, classwidth, K)
+
+
+def MeasuresOfDispersion(values, frequencies, bins, classwidth, K):
+    print("\n--- MEASURES OF DISPERSION ---\n")
+    
+    # range
+    data_range = np.max(values) - np.min(values)
+    print("Range:", data_range)
+
+    # Mean Absolute Deviation about the mean
+    mean_value = np.mean(values)
+    mad_mean = np.mean(np.abs(values - mean_value))
+    print("Mean Absolute Deviation about the mean:", mad_mean)
+
+    # Mean Absolute Deviation about the median
+    median_value = np.median(values)
+    mad_median = np.mean(np.abs(values - median_value))
+    print("Mean Absolute Deviation about the median:", mad_median)
+
+    # Standard Deviation
+    std_dev = np.std(values, ddof=0)   # population standard deviation
+    print("Standard Deviation:", std_dev)
+
+    # Coefficient of Variation (CV = SD / mean)
+    # making sure mean is not zero
+    if mean_value != 0:
+        cv = std_dev / abs(mean_value) * 100  # as percentage
+        print("Coefficient of Variation (%):", cv)
+    else:
+        print("Coefficient of Variation (%): undefined (mean = 0)")
+
+    # using frequency distribution from grouped data
+    midPoints = np.array(ClassMidpoints(values, classwidth, K))
+    frequencies_array = np.array(frequencies)
+
+    # weighted mean
+    mean_grouped = np.sum(midPoints * frequencies_array) / np.sum(frequencies_array)
+    # weighted MAD about mean
+    mad_mean_grouped = np.sum(frequencies_array * np.abs(midPoints - mean_grouped)) / np.sum(frequencies_array)
+    # weighted standard deviation
+    variance_grouped = np.sum(frequencies_array * (midPoints - mean_grouped)**2) / np.sum(frequencies_array)
+    std_dev_grouped = np.sqrt(variance_grouped)
+
+    print("\n Using Frequency Distribution")
+    print("MEAN for grouped data:", mean_grouped)
+    print("MAD about mean for grouped data:", mad_mean_grouped)
+    print("STANDARD DEVIATION for grouped data:", std_dev_grouped)
+    
+    
+MeasuresOfDispersion(values, frequencies, bins, classwidth, K)
+
+
+
 
 
