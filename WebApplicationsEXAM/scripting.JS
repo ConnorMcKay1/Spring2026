@@ -19,14 +19,14 @@ function updateClock() {
     const minutes = now.getMinutes();
     const hours = now.getHours();
 
-    
+    const offsetDeg = -210;
     const secondsDeg = seconds * 6;                    
     const minutesDeg = minutes * 6 + seconds * 0.1;    
     const hoursDeg = (hours % 12) * 30 + minutes * 0.5;
 
     
     document.querySelector(".secondHand").style.transform =
-        `translateX(-50%) rotate(${secondsDeg}deg)`;
+        `translateX(-50%) rotate(${secondsDeg + offsetDeg}deg)`;
 
     document.querySelector(".minuteHand").style.transform =
         `translateX(-50%) rotate(${minutesDeg}deg)`;

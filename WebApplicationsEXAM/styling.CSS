@@ -40,13 +40,13 @@
 
 .secondHand {
     position: absolute;
-    bottom: 50%;
-    left: 50%;
-    transform-origin: 50% 90%;  /* pivot near the base of the hand */
+    bottom: 20%;           /* adjust if needed */
+    left: 39%;
+    transform-origin: 78% 22%; /* tweak from 50% 50% to match the hand base */
     transform: translateX(-50%) rotate(0deg);
-    z-index: 3;
-    height: 120px;
+    height: 120px;         /* length of hand */
     width: auto;
+    z-index: 3;
 }
 
 
