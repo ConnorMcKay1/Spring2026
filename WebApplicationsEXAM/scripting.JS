@@ -37,3 +37,27 @@ function updateClock() {
 
 updateClock();
 setInterval(updateClock, 1000);
+
+
+function calculateAge() {
+    const dobValue = document.getElementById('DOBinput').value;
+    const currentValue = document.getElementById('DATEinput').value;
+
+    if (!dobValue) {
+        document.getElementById('result').innerText = "Please enter your Date of Birth";
+        return;
+    }
+
+    const dob = new Date(dobValue);
+    const current = currentValue ? new Date(currentValue) : new Date(); // fallsback to today through new data
+
+    const diffInMs = current - dob;
+    const diffInDays = diffInMs / (1000 * 60 * 60 * 24);
+
+    const years = Math.floor(diffInDays / 365.25);
+    const months = Math.floor((diffInDays % 365.25) / 30);
+    const days = Math.floor((diffInDays % 365.25) % 30);
+
+    document.getElementById('result').innerText = 
+        `Age: ${years} year(s), ${months} month(s), ${days} day(s)`;
+}

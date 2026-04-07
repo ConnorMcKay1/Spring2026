@@ -37,19 +37,33 @@
     border-radius: 2px;
 }
 
+
 .secondHand {
+    position: absolute;
+    bottom: 50%;
+    left: 50%;
+    transform-origin: 50% 90%;  /* pivot near the base of the hand */
+    transform: translateX(-50%) rotate(0deg);
+    z-index: 3;
+    height: 120px;
+    width: auto;
+}
+
+
+/* .secondHand {
     border: 2px solid red;
     background: rgba(255,0,0,0.2);
     position: absolute;
     bottom: 50%;
     left: 50%;
-    transform-origin: 50% 70%;    /* adjust to match overlay base */
+    transform-origin: 50% 70%; 
     transform: translateX(-50%) rotate(0deg);
-    height: 120px;    /* hand length */
+    height: 120px;    
     width: auto;
     object-fit: contain;
     z-index: 3;
-}
+} 
+*/
 
 .clock::after {
     content: '';
@@ -73,27 +87,47 @@
 
 .calculator{
     background: rgb(121, 252, 219);
-    height: 500px;
+    height: 400px;
     width: 200px;
-    border: 2px solid #000;
+    border-radius: 12px;                   
+    background: radial-gradient(circle at center, transparent 60%, rgb(47, 201, 240) 100%);
+    border: 2px solid gray;
+}
+
+
+.calculator table {
     border-collapse: separate; 
-    border-spacing: 0 40px; 
-    
+    width: 100%;
 }
 
-#title{
+
+#title td {
+    border-bottom: 2px solid salmon;
+    padding: 10px 5px;
+    font-size: 25px;
     text-align: center;
+    font-weight: bolder;
 }
 
-#DOBtitle{
-    
-
+#DOBtitle td {
+    border-top: 1px solid salmon;
+    padding: 10px 5px;
 }
 
-
-.calculator th, .calculator td {
-    border: 1px solid #000;  
-    padding: 10px;            
-    text-align: left;
+#DATEtitle td {
+    border-top: 1px solid salmon;
+    padding: 10px 5px;
 }
 
+#DATEinput td {
+    border-bottom: 1px solid salmon;
+    padding: 10px 5px;
+}
+
+#calculate td {             /*for the DoB use some random date, and for currrent date use JS to grab current mm/dd/yyyy */
+    text-align: center;
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
+    border-radius: 8px;
+}

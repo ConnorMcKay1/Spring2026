@@ -56,6 +56,7 @@ I will split these into Answer Blocks: Clock, Form, Birthday Card
         <h2> What's up yo!!! </h2>
         <h2> want to go see the grand canyon!!! </h2>
 
+        <!--
         <p class = "time">Open from <time>10:00</time> to <time>21:00</time> every weekday.</p>
 
         <p class = "time">I have a date on <time datetime="2008-02-14 20:00">Valentines day</time>.</p>
@@ -63,13 +64,13 @@ I will split these into Answer Blocks: Clock, Form, Birthday Card
 
 
         <p class = "time"> CURRENT TIME-: <time datetime="2026-04-17 21:00"> :-CURRENT TIME</time>.</p>
-        
+         -->
         <p>Current Time: <span id="current-time"></span></p>
 
 
-<!-- 
-this is actually pertenent to the clock (also watch section) 
--->
+
+
+<!-- for the clock-->
         <div>
             <img src = "croppedWatchFace.png"></img>
         </div>
@@ -84,6 +85,7 @@ this is actually pertenent to the clock (also watch section)
         </div>
 
 
+<!-- for the calculator -->
         <div class = "calculator">
 
             <table>
@@ -93,28 +95,38 @@ this is actually pertenent to the clock (also watch section)
                 <td> Age Calculator </td>    
                 </tr>
 
+                <tr style="height: 30px"><td></td></tr>  <!--just spacing -->
 
                 <tr id = "DOBtitle">
                 <td> Enter your Date of Birth: </td>    
                 </tr>
 
-                <tr id = "DOBinput">
-                <td><input type="text" name="DoB" placeholder="Date of Birth"></td>
+                <tr>
+                <td><input type="date" id = "DOBinput" ></td>
                 </tr>
+
+
+                <tr style="height: 30px"><td></td></tr>  <!--just spacing -->
 
 
                 <tr id = "DATEtitle">
-                <td> Enter the Date you want to Age: </td>    
+                <td> Enter the Date find your Age: </td>    
                 </tr>
                 
-                <tr id = "DATEinput">
-                <td><input type="text" name="Age" placeholder="Date of Age"></td>
+                <tr>
+                <td><input type="date" id = "DATEinput" ></td>
                 </tr>
+
+                <tr id = "calculate">
+                <td> <button onclick="calculateAge()">CALCULATE</button> </td>    
+                </tr>
+
+                <tr style="height: 20px"><td></td></tr>  <!--more spacing -->
 
                 <tr>
-                <td> <button>CALCULATE</button> </td>    
+                <td><output id="result"></output></td>
                 </tr>
-
+                
             </tbody>
             </table>
 
