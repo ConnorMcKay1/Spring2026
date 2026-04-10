@@ -38,17 +38,26 @@ PREDICT CONCRETE STRENGHT based on the ingredient input amounts/auntities?
 
 print("test test turnip \n")
 
-    # This is currently 'concrete_compresssive_strencth.csv
-dataFile = "C:/Users/cmcka/OneDrive/Desktop/Spring2026/AppliedProbability&Statistics/AppliedProb&StatsConcrete/concrete_compressive_strength.csv"
+    # This is 'concrete_compresssive_strencth.csv
+#dataFile = "C:/Users/cmcka/OneDrive/Desktop/Spring2026/AppliedProbability&Statistics/AppliedProb&StatsConcrete/concrete_compressive_strength.csv"
+
+    # This is 'concrete_resistance.csv
+#dataFile = "C:/Users/cmcka/OneDrive/Desktop/Spring2026/AppliedProbability&Statistics/AppliedProb&StatsConcrete/Concrete_Resistance.csv"
+
+    # This is Dataset2 - Data.csv
+dataFile = "C:/Users/cmcka/OneDrive/Desktop/Spring2026/AppliedProbability&Statistics/AppliedProb&StatsConcrete/Dataset2 - Data.csv"
+
 
 
     # just reading in the 1 of the data sets to get the 2 columns for the scatter
     # for the scatter plot method below
 def DataReadIn(csvFile):
     df = pd.read_csv(csvFile)
-    selected_columns = df[['Cement', 'Concrete Compressive Strength']]
-    xAxis_Column = df['Cement'].tolist()
-    yAxis_Column = df['Concrete Compressive Strength'].tolist()
+    #selected_columns = df[['Cement', 'Concrete Compressive Strength']]     #this just grabs both columns and puts them in 1 object
+    #xAxis_Column = df['Cement'].tolist()
+    xAxis_Column = df.iloc[:, 0].tolist()
+    #yAxis_Column = df['Concrete Compressive Strength'].tolist()
+    yAxis_Column = df.iloc[:, 8].tolist()
     return xAxis_Column, yAxis_Column, df
 
 xAxis_Column, yAxis_Column, df = DataReadIn(dataFile)
@@ -66,5 +75,7 @@ def ScatterPlot(xAxis_Column, yAxis_Column, df):
     plt.title('Cement --> Concrete Strength')
     plt.show()
 
-#good night 
+
 ScatterPlot(xAxis_Column, yAxis_Column, df)
+
+
