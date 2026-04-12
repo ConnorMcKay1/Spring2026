@@ -2,3 +2,57 @@ h4 {
     background-color: lightseagreen;
     color: navy;
 }
+
+
+    /* resizing slideshow */
+#heroCarousel .carousel-item img {
+  height: 450px;
+  width: 100%;
+  object-fit: cover;
+}
+
+#heroCarousel img {
+  display: block;
+}
+
+#heroCarousel {
+  height: 350px;
+  overflow: hidden;
+}
+
+#heroCarousel .carousel-item {
+  height: 350px;
+}
+
+.carousel-item {
+  transition: transform 0.8s ease-in-out;
+}
+
+
+    /* 3 images and their precision */
+#img1 {
+  object-position: center top;
+}
+
+#img2 {
+  object-position: center 1%;
+}
+
+#img3 {
+    object-position: bottom;
+}
+
+    /* overlaying caption over images */
+#heroCarousel {
+  position: relative;
+}
+
+.hero-overlay {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  color: white;
+  z-index: 10;
+}
