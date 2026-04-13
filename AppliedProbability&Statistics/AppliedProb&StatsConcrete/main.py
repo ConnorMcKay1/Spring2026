@@ -2,6 +2,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
 
+from test1 import LinearRegression
 
 '''
 
@@ -32,7 +33,7 @@ PREDICT CONCRETE STRENGHT based on the ingredient input amounts/auntities?
     #   (Measures the Strgth & dir. of linear relationship)
     # Regression Analysis: would create a "line of best fit"
     #                      to model the relationship & make predictions                      
-
+##################################################################
 
 
 
@@ -48,15 +49,11 @@ print("test test turnip \n")
 dataFile = "C:/Users/cmcka/OneDrive/Desktop/Spring2026/AppliedProbability&Statistics/AppliedProb&StatsConcrete/Dataset2 - Data.csv"
 
 
-
     # just reading in the 1 of the data sets to get the 2 columns for the scatter
     # for the scatter plot method below
 def DataReadIn(csvFile):
     df = pd.read_csv(csvFile)
-    #selected_columns = df[['Cement', 'Concrete Compressive Strength']]     #this just grabs both columns and puts them in 1 object
-    #xAxis_Column = df['Cement'].tolist()
     xAxis_Column = df.iloc[:, 0].tolist()
-    #yAxis_Column = df['Concrete Compressive Strength'].tolist()
     yAxis_Column = df.iloc[:, 8].tolist()
     return xAxis_Column, yAxis_Column, df
 
@@ -76,6 +73,10 @@ def ScatterPlot(xAxis_Column, yAxis_Column, df):
     plt.show()
 
 
-ScatterPlot(xAxis_Column, yAxis_Column, df)
+#ScatterPlot(xAxis_Column, yAxis_Column, df)
 
 
+if __name__ == "__main__":
+    
+    ScatterPlot(xAxis_Column, yAxis_Column, df)
+    LinearRegression(xAxis_Column, yAxis_Column)
