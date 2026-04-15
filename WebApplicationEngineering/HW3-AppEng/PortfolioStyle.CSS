@@ -30,15 +30,15 @@ h4 {
 
 
     /* 3 images and their precision */
-#img1 {
+#QuarryExcavator {
   object-position: center top;
 }
 
-#img2 {
+#SmallWaterWeir {
   object-position: center 1%;
 }
 
-#img3 {
+#SurfFishing {
     object-position: bottom;
 }
 
@@ -55,4 +55,33 @@ h4 {
   text-align: center;
   color: white;
   z-index: 10;
+}
+
+
+.jumbotron {
+  width: 500px;
+  height: 500px;
+}
+
+
+/* This is stying/animation for the album icons */
+.album-container {
+  position: fixed;
+  right: 60px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.album-card {
+  width: 250px;
+  height: 220px;
+  
+  transform: perspective(1000px) rotateY(-10deg) rotateX(5deg);
+  transition: transform 0.3s ease;
+  cursor: pointer;
+}
+
+
+.album-card:hover {
+  transform: perspective(1000px) rotateY(0deg) rotateX(0deg) scale(1.05);
 }
