@@ -1,8 +1,7 @@
 import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
-
-from test1 import LinearRegression
+from scipy import stats
 
 '''
 
@@ -40,13 +39,13 @@ PREDICT CONCRETE STRENGHT based on the ingredient input amounts/auntities?
 print("test test turnip \n")
 
     # This is 'concrete_compresssive_strencth.csv
-#dataFile = "C:/Users/cmcka/OneDrive/Desktop/Spring2026/AppliedProbability&Statistics/AppliedProb&StatsConcrete/concrete_compressive_strength.csv"
+dataFile = "C:/Users/cmcka/OneDrive/Desktop/Spring2026/AppliedProbability&Statistics/AppliedProb&StatsConcrete/concrete_compressive_strength.csv"
 
     # This is 'concrete_resistance.csv
 #dataFile = "C:/Users/cmcka/OneDrive/Desktop/Spring2026/AppliedProbability&Statistics/AppliedProb&StatsConcrete/Concrete_Resistance.csv"
 
     # This is Dataset2 - Data.csv
-dataFile = "C:/Users/cmcka/OneDrive/Desktop/Spring2026/AppliedProbability&Statistics/AppliedProb&StatsConcrete/Dataset2 - Data.csv"
+#dataFile = "C:/Users/cmcka/OneDrive/Desktop/Spring2026/AppliedProbability&Statistics/AppliedProb&StatsConcrete/Dataset2 - Data.csv"
 
 
     # just reading in the 1 of the data sets to get the 2 columns for the scatter
@@ -76,7 +75,23 @@ def ScatterPlot(xAxis_Column, yAxis_Column, df):
 #ScatterPlot(xAxis_Column, yAxis_Column, df)
 
 
+
+def LinearRegression(xAxis_Column, yAxis_Column):
+  result = stats.linregress(xAxis_Column, yAxis_Column)
+  print(result)
+  x = np.array(xAxis_Column)
+  y = np.array(yAxis_Column)
+  print(f'result intercept: {result.intercept} ')
+  print(f'result slope: {result.slope}')
+  
+  m = result.slope
+  b = result.intercept
+  regressionLine = (result.slope*x)+result.intercept  
+  plt.plot(x, y, 'bo')
+  plt.plot(x, regressionLine, 'r')
+  plt.show()
+
 if __name__ == "__main__":
     
-    ScatterPlot(xAxis_Column, yAxis_Column, df)
+    #ScatterPlot(xAxis_Column, yAxis_Column, df)
     LinearRegression(xAxis_Column, yAxis_Column)
