@@ -58,30 +58,45 @@ h4 {
 }
 
 
+    /* container left + right */
+.main-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* equal width */
+  gap: 40px;
+  align-items: start;
+}
+
+    /* jumbotron */
 .jumbotron {
-  width: 500px;
-  height: 500px;
+  width: 100%;
+  min-height: 500px;
 }
 
-
-/* This is stying/animation for the album icons */
-.album-container {
-  position: fixed;
-  right: 60px;
-  top: 50%;
-  transform: translateY(-50%);
+    /* album grid (2x2) */
+.album-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
 }
 
+    /* album icons */
 .album-card {
-  width: 250px;
-  height: 220px;
-  
+  width: 100%;
+  height: 200px;
+  overflow: hidden;
+
   transform: perspective(1000px) rotateY(-10deg) rotateX(5deg);
   transition: transform 0.3s ease;
   cursor: pointer;
 }
 
+.album-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
 
 .album-card:hover {
   transform: perspective(1000px) rotateY(0deg) rotateX(0deg) scale(1.05);
 }
+

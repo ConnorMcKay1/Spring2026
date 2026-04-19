@@ -64,41 +64,53 @@
         </div>
 
 
-        <!-- This is for a jumbotron for the biography (maybe) -->
-        <div class="jumbotron">
-            <h1 class="display-4">Connor's Consortium</h1>
-            <p class="lead">A collection of pictures that show what areas of photography i'm interested in,
-                            places i've been, and things i've seen.
-            </p>
-            <hr class="my-4">
-            <p>The date range of these pictures is: May, 2015 -- April, 2026.
-                All of the pictures were captured using iPhone: 5s, 8+, 12 proMax, 16 proMax.
-                &copy; 2026 Connor M.
-            </p>
-            <p class="lead">
-                <a class="btn btn-primary btn-lg" href="https://www.freecad.org/" role="button"> FreeCAD </a>
-            </p>
-        </div>
 
 
+        <div class="main-layout container mt-5">
 
-
-        <!-- this is for the album icons -->
-        <div class="album-container d-flex justify-content-end">
-            <div class="d-flex flex-wrap gap-3">
-
-                <!-- nature album thumbnail/cover-->
-                <div class="album-card" data-bs-toggle="modal" data-bs-target="#natureAlbum">
-                    <img src="images/ConiferousLake.JPEG" class="img-fluid">
-                </div>
-
-                <!-- infrastructure album thumbnail/cover -->
-                <div class="album-card" data-bs-toggle="modal" data-bs-target="#bridgeAlbum">
-                    <img src="images/Bridge1.JPEG" class="img-fluid">
-                </div>
-
+            <!-- jumbotron on the left side of container-->
+            <div class="jumbotron">
+                <h1 class="display-4">Connor's Consortium</h1>
+                <p class="lead">
+                    A collection of pictures that show what areas of photography i'm interested in,
+                    places i've been, and things i've seen.
+                </p>
+                <hr class="my-4">
+                <p>
+                    The date range of these pictures is: May, 2015 -- April, 2026.
+                    All of the pictures were captured using iPhone: 5s, 8+, 12 proMax, 16 proMax.
+                </p>
+                <p class="lead">
+                    <a class="btn btn-primary btn-lg" href="https://www.freecad.org/" role="button">FreeCAD</a>
+                    <br><br>
+                    &copy; 2026 Connor M.
+                </p>
             </div>
+
+            <!-- albums on right side of container -->
+            <div class="album-grid">
+                <div class="album-card" data-bs-toggle="modal" data-bs-target="#natureAlbum">
+                    <img src="images/ConiferousLake.JPEG">
+                </div>
+
+                <div class="album-card" data-bs-toggle="modal" data-bs-target="#bridgeAlbum">
+                    <img src="images/Bridge1.JPEG">
+                </div>
+
+                <div class="album-card" data-bs-toggle="modal" data-bs-target="#workAlbum">
+                    <img src="images/WindowWarehouse.JPEG">
+                </div>
+
+                <div class="album-card" data-bs-toggle="modal" data-bs-target="#vacationAlbum">
+                    <img src="images/SpaceNeedleWannabe.JPEG">
+                </div>
+            </div>
+
         </div>
+
+
+
+
 
         <!-- nature album content/pictures -->
         <div class="modal fade" id="natureAlbum" tabindex="-1">
@@ -127,15 +139,14 @@
         </div>
 
 
-        
-        <!-- infrastructure album content/pictures -->
-        <div class="modal fade" id="bridgeAlbum" tabindex="-1">
+        <!-- work album content/pictures -->
+        <div class="modal fade" id="workAlbum" tabindex="-1">
             <div class="modal-dialog modal-lg modal-dialog-centered">
                 <div class="modal-content">
                     <div class="modal-body" id="modalGallery">
-                        <img src="images/Bridge1.JPEG" class="img-fluid">
-                        <img src="images/Bridge2.JPEG" class="img-fluid">
-                        <img src="images/Bridge3.JPEG" class="img-fluid">
+                        <img src="images/WindowWarehouse.JPEG" class="img-fluid">
+                        <img src="images/Telehandler.JPEG" class="img-fluid">
+                        <img src="images/SimpsonStrongTie.JPEG" class="img-fluid">
                     </div>
                 </div>
             </div>
@@ -143,13 +154,18 @@
 
 
 
-
-
-
-
-
-
-
+        <!-- work album content/pictures -->
+        <div class="modal fade" id="vacationAlbum" tabindex="-1">
+            <div class="modal-dialog modal-lg modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-body" id="modalGallery">
+                        <img src="images/SpaceNeedleWannabe.JPEG" class="img-fluid">
+                        <img src="images/TiranaSidewalk.JPEG" class="img-fluid">
+                        <img src="images/LoneStarCapital.JPEG" class="img-fluid">
+                    </div>
+                </div>
+            </div>
+        </div>
 
 
 
