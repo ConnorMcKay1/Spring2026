@@ -48,6 +48,7 @@ h4 {
 }
 
 .hero-overlay {
+  font-style: italic;
   position: absolute;
   top: 50%;
   left: 50%;
@@ -56,6 +57,7 @@ h4 {
   color: white;
   z-index: 10;
 }
+
 
 
     /* container left + right */
@@ -70,6 +72,14 @@ h4 {
 .jumbotron {
   width: 100%;
   min-height: 500px;
+}
+
+.freecad-btn {
+  color:rgb(221, 161, 161);
+}
+
+.freecad-btn:hover {
+  color:rgb(236, 127, 154) 
 }
 
     /* album grid (2x2) */
