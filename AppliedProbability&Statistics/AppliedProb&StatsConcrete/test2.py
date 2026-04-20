@@ -6,6 +6,8 @@ create a linear regression method that will take the regressionLine of all the c
 then do this for each of the graphs; so just 'For N .csv files in directory, run NewRegressionLine method'
 '''
 
+
+
 import pandas as pd
 import io
 import matplotlib.pyplot as plt
@@ -15,7 +17,7 @@ from scipy import stats
 from main import LinearRegression
 
 
-dataFile = "C:/Users/cmcka/OneDrive/Desktop/Spring2026/AppliedProbability&Statistics/AppliedProb&StatsConcrete/concrete_compressive_strength.csv"
+dataFile = "C:/Users/cmcka/OneDrive/Desktop/Spring2026/AppliedProbability&Statistics/AppliedProb&StatsConcrete/Concrete_Resistance.csv"
 
 
 listOfColumns = []
@@ -23,7 +25,7 @@ listOfColumns = []
 def DataReadIn(dataFile):
     df = pd.read_csv(dataFile)
 
-    yAxis_columnIndex = 8
+    yAxis_columnIndex = 9
 
     # Y column (target)
     yAxis_Column = df.iloc[:, yAxis_columnIndex].tolist()
@@ -41,7 +43,7 @@ def DataReadIn(dataFile):
 def LinearRegression_AllColumns(listOfColumns, df):
     num_plots = len(listOfColumns)
     
-    y_col_name = df.columns[8]
+    y_col_name = df.columns[9]              # change based on # of ingredients
     x_columns = df.columns.drop(y_col_name)
 
     cols = 3
@@ -66,9 +68,9 @@ def LinearRegression_AllColumns(listOfColumns, df):
     for j in range(i + 1, len(axes)):
         fig.delaxes(axes[j])
 
-    # plt.savefig(f"concrete_compressive_strenght.png")
-    # plt.close()
-    plt.show()
+    plt.savefig(f"Concrete_Resistance.png")
+    plt.close()
+    #plt.show()
     
 
 if __name__ == "__main__":
