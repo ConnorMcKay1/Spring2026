@@ -52,6 +52,7 @@ dataFile = "C:/Users/cmcka/OneDrive/Desktop/Spring2026/AppliedProbability&Statis
     # for the scatter plot method below
 def DataReadIn(csvFile):
     df = pd.read_csv(csvFile)
+    
     xAxis_Column = df.iloc[:, 0].tolist()
     yAxis_Column = df.iloc[:, 8].tolist()
     return xAxis_Column, yAxis_Column, df
@@ -76,22 +77,24 @@ def ScatterPlot(xAxis_Column, yAxis_Column, df):
 
 
 
-def LinearRegression(xAxis_Column, yAxis_Column):
-  result = stats.linregress(xAxis_Column, yAxis_Column)
-  print(result)
-  x = np.array(xAxis_Column)
-  y = np.array(yAxis_Column)
-  print(f'result intercept: {result.intercept} ')
-  print(f'result slope: {result.slope}')
-  
-  m = result.slope
-  b = result.intercept
-  regressionLine = (result.slope*x)+result.intercept  
-  plt.plot(x, y, 'bo')
-  plt.plot(x, regressionLine, 'r')
-  plt.show()
+def LinearRegression(xAxis_Column, yAxis_Column, ax, title=""):
+    result = stats.linregress(xAxis_Column, yAxis_Column)
+
+    x = np.array(xAxis_Column)
+    y = np.array(yAxis_Column)
+
+    m = result.slope
+    b = result.intercept
+    regressionLine = m * x + b  
+
+    ax.plot(x, y, 'bo', markersize=3)
+    ax.plot(x, regressionLine, 'r')
+    ax.set_title(title)
+    ax.set_title(title, fontsize = 10)
+
+    return result
+
 
 if __name__ == "__main__":
-    
     #ScatterPlot(xAxis_Column, yAxis_Column, df)
     LinearRegression(xAxis_Column, yAxis_Column)
