@@ -34,18 +34,19 @@ PREDICT CONCRETE STRENGHT based on the ingredient input amounts/auntities?
     #                      to model the relationship & make predictions                      
 ##################################################################
 
+from utilsStats import *
 
 
 print("test test turnip \n")
 
     # This is 'concrete_compresssive_strencth.csv
-dataFile = "C:/Users/cmcka/OneDrive/Desktop/Spring2026/AppliedProbability&Statistics/AppliedProb&StatsConcrete/concrete_compressive_strength.csv"
+#dataFile = "C:/Users/cmcka/OneDrive/Desktop/Spring2026/AppliedProbability&Statistics/AppliedProb&StatsConcrete/concrete_compressive_strength.csv"
 
     # This is 'concrete_resistance.csv
 #dataFile = "C:/Users/cmcka/OneDrive/Desktop/Spring2026/AppliedProbability&Statistics/AppliedProb&StatsConcrete/Concrete_Resistance.csv"
 
     # This is Dataset2 - Data.csv
-#dataFile = "C:/Users/cmcka/OneDrive/Desktop/Spring2026/AppliedProbability&Statistics/AppliedProb&StatsConcrete/Dataset2 - Data.csv"
+dataFile = "C:/Users/cmcka/OneDrive/Desktop/Spring2026/AppliedProbability&Statistics/AppliedProb&StatsConcrete/Dataset2 - Data.csv"
 
 
     # just reading in the 1 of the data sets to get the 2 columns for the scatter
@@ -94,7 +95,40 @@ def LinearRegression(xAxis_Column, yAxis_Column, ax, title=""):
 
     return result
 
+def UtilsPrinter():
+    print(xAxis_Column)
+    print("----------------------------------------------------------------------------------------")
+    print(yAxis_Column)
+    print("------------------")
+    Mean(xAxis_Column)
+    print("------------------")
+    StandardDeviation(xAxis_Column)
+    print("------------------")
+    Correlation(xAxis_Column, yAxis_Column)
+    print("------------------")
+    RegressionLine(xAxis_Column, yAxis_Column)
+    print("------------------")
+    Covariance(xAxis_Column, yAxis_Column)
+
+
+def test(df):
+    data = df.iloc[:, 8]
+    
+    mu, sigma = stats.fit(data)
+
+    x = np.linspace(min(data), max(data), 100)
+
+    plt.hist(data, bins=30, density=True, alpha=0.6)
+    plt.plot(x, stats.pdf(x, mu, sigma), 'r')
+    plt.title("Histogram + Fitted Normal")
+    plt.show()
+    
+    
+
 
 if __name__ == "__main__":
-    #ScatterPlot(xAxis_Column, yAxis_Column, df)
-    LinearRegression(xAxis_Column, yAxis_Column)
+    test(df)
+    print()
+
+
+    #LinearRegression(xAxis_Column, yAxis_Column)
