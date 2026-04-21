@@ -112,22 +112,18 @@ def UtilsPrinter():
 
 
 def test(df):
-    data = df.iloc[:, 8]
+    num_plots = (len(df) - 1)
+    strengthIndex = num_plots
     
-    mu, sigma = stats.fit(data)
+    return strengthIndex
 
-    x = np.linspace(min(data), max(data), 100)
-
-    plt.hist(data, bins=30, density=True, alpha=0.6)
-    plt.plot(x, stats.pdf(x, mu, sigma), 'r')
-    plt.title("Histogram + Fitted Normal")
-    plt.show()
-    
+strengthIndex = test(df)
     
 
 
 if __name__ == "__main__":
-    test(df)
+    print("strength index :   ", strengthIndex)
+
     print()
 
 
