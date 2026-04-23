@@ -35,8 +35,31 @@ def Covariance(X, Y):
     covariance = matrix[0, 1] 
     return covariance
 
+    # get the distribution of a SINGLE column
+def Distribution(df):
+    
+    # number of columns in the dataFrams
+    NumberOfColumns = (len(df.columns))
+    
+    print(NumberOfColumns)
+    
+    #strengthIndex = (len(df.columns)-1)  # this can be used to manually select what column to check the distribution of
+    
+    # for column in enumerate(df.columns):
+    #     data = df.iloc[:, column]
+    #     mu, sigma = stats.norm.fit(data)
+    #     print("this is the mean(mu): ", mu, " this is the variance(sigma): ", sigma)
 
-def Distribution():
+
+
+    # mu, sigma = stats.norm.fit(data)
+    
+    # print("this is the mean(mu): ", mu, " this is the variance(sigma): ", sigma)
+    
+    # return mu, sigma
+    
+
+def heynowMorningGloryOasis():
     print()
 
 

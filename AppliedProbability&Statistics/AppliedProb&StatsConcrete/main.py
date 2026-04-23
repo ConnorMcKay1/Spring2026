@@ -43,7 +43,7 @@ print("test test turnip \n")
     # This is 'concrete_compresssive_strencth.csv
 dataFile = "C:/Users/cmcka/OneDrive/Desktop/Spring2026/AppliedProbability&Statistics/AppliedProb&StatsConcrete/concrete_compressive_strength.csv"
 
-    # This is 'concrete_resistance.csv
+    # This is 'concrete_resistance.csv  --> this is the one with 10 columns and 2 differenct variables
 #dataFile = "C:/Users/cmcka/OneDrive/Desktop/Spring2026/AppliedProbability&Statistics/AppliedProb&StatsConcrete/Concrete_Resistance.csv"
 
     # This is Dataset2 - Data.csv
@@ -81,23 +81,6 @@ def ScatterPlot(xAxis_Column, yAxis_Column, df):
 
 
 
-def LinearRegression(xAxis_Column, yAxis_Column, ax, title=""):
-    result = stats.linregress(xAxis_Column, yAxis_Column)
-
-    x = np.array(xAxis_Column)
-    y = np.array(yAxis_Column)
-
-    m = result.slope
-    b = result.intercept
-    regressionLine = m * x + b  
-
-    ax.plot(x, y, 'bo', markersize=3)
-    ax.plot(x, regressionLine, 'r')
-    ax.set_title(title)
-    ax.set_title(title, fontsize = 10)
-
-    return result
-
 def UtilsPrinter():
     print(xAxis_Column)
     print("----------------------------------------------------------------------------------------")
@@ -122,13 +105,11 @@ def test(df):
 
     x = np.linspace(data.min(), data.max(), 100)
 
-    # Plot the histogram of the data
-    plt.hist(data, bins=30, density=True, alpha=0.6, label='Data Histogram')
+    plt.hist(data, bins=30, density=True, alpha=0.6, label='Data Histogram') # Plot the histogram of the data
 
-    # Plot the fitted normal probability density function (PDF)
-    plt.plot(x, stats.norm.pdf(x, mu, sigma), 'r-', label='Fitted Normal PDF')
+    plt.plot(x, stats.norm.pdf(x, mu, sigma), 'r-', label='Fitted Normal PDF') # Plot the fitted normal PDF (prob density func)
 
-    plt.title("Histogram with Fitted Normal Distribution for Column 9")
+    plt.title(f'Histogram with Fitted Normal Distribution for Column: {strengthIndex}' )
     plt.xlabel(df.columns[strengthIndex] if len(df.columns) > 9 else 'Column 9 Value') # Use column name if available
     plt.ylabel('Density')
     plt.legend()
@@ -136,7 +117,7 @@ def test(df):
 
 
 if __name__ == "__main__":
-    test(df)
+    Distribution(df)
     print("waht what waht?!")
 
 
