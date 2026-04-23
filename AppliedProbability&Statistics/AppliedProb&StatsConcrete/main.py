@@ -39,14 +39,17 @@ from utilsStats import *
 
 print("test test turnip \n")
 
+#----------------------------------------------------------------------------------------------------------------------------------
     # This is 'concrete_compresssive_strencth.csv
-#dataFile = "C:/Users/cmcka/OneDrive/Desktop/Spring2026/AppliedProbability&Statistics/AppliedProb&StatsConcrete/concrete_compressive_strength.csv"
+dataFile = "C:/Users/cmcka/OneDrive/Desktop/Spring2026/AppliedProbability&Statistics/AppliedProb&StatsConcrete/concrete_compressive_strength.csv"
 
     # This is 'concrete_resistance.csv
 #dataFile = "C:/Users/cmcka/OneDrive/Desktop/Spring2026/AppliedProbability&Statistics/AppliedProb&StatsConcrete/Concrete_Resistance.csv"
 
     # This is Dataset2 - Data.csv
-dataFile = "C:/Users/cmcka/OneDrive/Desktop/Spring2026/AppliedProbability&Statistics/AppliedProb&StatsConcrete/Dataset2 - Data.csv"
+#dataFile = "C:/Users/cmcka/OneDrive/Desktop/Spring2026/AppliedProbability&Statistics/AppliedProb&StatsConcrete/Dataset2 - Data.csv"
+#----------------------------------------------------------------------------------------------------------------------------------
+
 
 
     # just reading in the 1 of the data sets to get the 2 columns for the scatter
@@ -112,19 +115,29 @@ def UtilsPrinter():
 
 
 def test(df):
-    num_plots = (len(df) - 1)
-    strengthIndex = num_plots
-    
-    return strengthIndex
+    strengthIndex = (len(df.columns)-1)
+    data = df.iloc[:, strengthIndex]
 
-strengthIndex = test(df)
-    
+    mu, sigma = stats.norm.fit(data)
+
+    x = np.linspace(data.min(), data.max(), 100)
+
+    # Plot the histogram of the data
+    plt.hist(data, bins=30, density=True, alpha=0.6, label='Data Histogram')
+
+    # Plot the fitted normal probability density function (PDF)
+    plt.plot(x, stats.norm.pdf(x, mu, sigma), 'r-', label='Fitted Normal PDF')
+
+    plt.title("Histogram with Fitted Normal Distribution for Column 9")
+    plt.xlabel(df.columns[strengthIndex] if len(df.columns) > 9 else 'Column 9 Value') # Use column name if available
+    plt.ylabel('Density')
+    plt.legend()
+    plt.show()    
 
 
 if __name__ == "__main__":
-    print("strength index :   ", strengthIndex)
-
-    print()
+    test(df)
+    print("waht what waht?!")
 
 
     #LinearRegression(xAxis_Column, yAxis_Column)
