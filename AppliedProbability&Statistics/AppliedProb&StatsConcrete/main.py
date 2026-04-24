@@ -38,13 +38,13 @@ PREDICT CONCRETE STRENGHT based on the ingredient input amounts/auntities?
 
 from utilsStats import *
 from plotting import *
-
+from utilsProbs import *
 
 print("test test turnip \n")
 
 #----------------------------------------------------------------------------------------------------------------------------------
     # This is 'concrete_compresssive_strencth.csv --> (data_1)
-#dataFile = "C:\Users/cmcka/OneDrive/Desktop/Spring2026/AppliedProbability&Statistics/AppliedProb&StatsConcrete/data_1.csv"
+dataFile = "C:/Users/cmcka/OneDrive/Desktop/Spring2026/AppliedProbability&Statistics/AppliedProb&StatsConcrete/data_1.csv"
  
     # This is 'concrete_resistance.csv  --> (data_2) --> this is the one with 10 columns and 2 differenct variables
 #dataFile = "C:/Users/cmcka/OneDrive/Desktop/Spring2026/AppliedProbability&Statistics/AppliedProb&StatsConcrete/data_2.csv"
@@ -53,7 +53,7 @@ print("test test turnip \n")
 #dataFile = "C:/Users/cmcka/OneDrive/Desktop/Spring2026/AppliedProbability&Statistics/AppliedProb&StatsConcrete/data_3.csv"
 
     # This is from OpenML --> data_4
-dataFile = "C:/Users/cmcka/OneDrive/Desktop/Spring2026/AppliedProbability&Statistics/AppliedProb&StatsConcrete/data_4.csv"
+#dataFile = "C:/Users/cmcka/OneDrive/Desktop/Spring2026/AppliedProbability&Statistics/AppliedProb&StatsConcrete/data_4.csv"
 
 #----------------------------------------------------------------------------------------------------------------------------------
 
@@ -95,4 +95,4 @@ def test():
 
 if __name__ == "__main__":
     print("main runner")
-    DistributionPlot(df)
+    MatrixCreator(df)
