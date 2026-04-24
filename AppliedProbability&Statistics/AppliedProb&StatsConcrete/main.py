@@ -51,6 +51,10 @@ print("test test turnip \n")
 
     # This is Dataset2 - Data.csv --> (data_3)
 #dataFile = "C:/Users/cmcka/OneDrive/Desktop/Spring2026/AppliedProbability&Statistics/AppliedProb&StatsConcrete/data_3.csv"
+
+    # This is from OpenML --> data_4
+dataFile = "C:/Users/cmcka/OneDrive/Desktop/Spring2026/AppliedProbability&Statistics/AppliedProb&StatsConcrete/data_4.csv"
+
 #----------------------------------------------------------------------------------------------------------------------------------
 
 
@@ -64,7 +68,7 @@ def DataReadIn(csvFile):
     yAxis_Column = df.iloc[:, 8].tolist()
     return xAxis_Column, yAxis_Column, df
 
-#xAxis_Column, yAxis_Column, df = DataReadIn(dataFile)
+xAxis_Column, yAxis_Column, df = DataReadIn(dataFile)
 
 
     # just a bunch of calls to the functions in utilsStats.py
@@ -84,24 +88,11 @@ def UtilsPrinter():
     Covariance(xAxis_Column, yAxis_Column)
 
 
-
-
-file = "C:/Users/cmcka/OneDrive/Desktop/Spring2026/AppliedProbability&Statistics/AppliedProb&StatsConcrete/data_4.arff"
-
-def test(file):
-
-    data, meta = arff.loadarff(file)
-
-    df = pd.DataFrame(data)
-
-    # Optional — only if needed
-    # df = df.applymap(lambda x: x.decode() if isinstance(x, bytes) else x)
-
-    df.to_csv("concrete.csv", index=False)
-
+def test():
     print("Conversion complete!")
 
 
 
 if __name__ == "__main__":
-    test(file)
+    print("main runner")
+    DistributionPlot(df)

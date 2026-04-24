@@ -60,6 +60,7 @@ def LinearRegression_AllColumns(df):
     for j in range(num_plots, len(axes)):
         fig.delaxes(axes[j])
 
+    #fig.savefig("my_plot.png")
     plt.show()
 
 
@@ -102,6 +103,6 @@ def DistributionPlot(df):
     for j in range(num_plots, len(axes)):
         fig.delaxes(axes[j])
 
-    fig.savefig("my_plot.png")
+    #fig.savefig("my_plot.png")
     plt.show()
 
