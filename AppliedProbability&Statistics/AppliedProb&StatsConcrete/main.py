@@ -95,4 +95,4 @@ def test():
 
 if __name__ == "__main__":
     print("main runner")
-    MatrixCreator(df)
+    print(MatrixTranspose(df))

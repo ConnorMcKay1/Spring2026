@@ -7,13 +7,23 @@ from scipy import stats
 #  θ = (((X^T)*X)^-1)*(X^T)*(~>y)
 
 
-def MatrixCreator(df):
-    print("it's a dataFrame!")
-    
+def MatrixCreator(df):    
     matrix = df.to_numpy()
-    print(matrix)
     return matrix
     
     
-def MatrixTranspose(matrix):
-    print("it's a transpose!")
+def MatrixTranspose(df):    
+    matrix = MatrixCreator(df)
+    transposedMatrix = np.transpose(matrix)
+    return transposedMatrix
+
+
+# for non-square matrix:
+#     numpy.linalg.pinv (Moore-Penrose Pseudoinverse) --> np.linalg.pinv(A)
+#     numpy.linalg.lstsq (Least-Squares Solution)     --> np.linalg.lstsq(A, b)
+def MatrixInverse(df):
+    matrix = MatrixCreator(df)
+    inversedMatrix = np.linalg.pinv(matrix)
+    return inversedMatrix
+    
+    
