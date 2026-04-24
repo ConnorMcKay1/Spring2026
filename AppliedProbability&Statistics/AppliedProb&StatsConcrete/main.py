@@ -35,19 +35,19 @@ PREDICT CONCRETE STRENGHT based on the ingredient input amounts/auntities?
 ##################################################################
 
 from utilsStats import *
+from plotting import *
 
 
 print("test test turnip \n")
 
 #----------------------------------------------------------------------------------------------------------------------------------
-    # This is 'concrete_compresssive_strencth.csv
-dataFile = "C:/Users/cmcka/OneDrive/Desktop/Spring2026/AppliedProbability&Statistics/AppliedProb&StatsConcrete/concrete_compressive_strength.csv"
+    # This is 'concrete_compresssive_strencth.csv --> (data_1)
+#dataFile = "C:\Users/cmcka/OneDrive/Desktop/Spring2026/AppliedProbability&Statistics/AppliedProb&StatsConcrete/data_1.csv"
+    # This is 'concrete_resistance.csv  --> (data_2) --> this is the one with 10 columns and 2 differenct variables
+dataFile = "C:/Users/cmcka/OneDrive/Desktop/Spring2026/AppliedProbability&Statistics/AppliedProb&StatsConcrete/data_2.csv"
 
-    # This is 'concrete_resistance.csv  --> this is the one with 10 columns and 2 differenct variables
-#dataFile = "C:/Users/cmcka/OneDrive/Desktop/Spring2026/AppliedProbability&Statistics/AppliedProb&StatsConcrete/Concrete_Resistance.csv"
-
-    # This is Dataset2 - Data.csv
-#dataFile = "C:/Users/cmcka/OneDrive/Desktop/Spring2026/AppliedProbability&Statistics/AppliedProb&StatsConcrete/Dataset2 - Data.csv"
+    # This is Dataset2 - Data.csv --> (data_3)
+#dataFile = "C:/Users/cmcka/OneDrive/Desktop/Spring2026/AppliedProbability&Statistics/AppliedProb&StatsConcrete/data_3.csv"
 #----------------------------------------------------------------------------------------------------------------------------------
 
 
@@ -64,23 +64,9 @@ def DataReadIn(csvFile):
 xAxis_Column, yAxis_Column, df = DataReadIn(dataFile)
 
 
-    # this is just a method for taking the 2 columns from the csv file
-    # and plotting them using ScatterPlot to look for any relationships
-def ScatterPlot(xAxis_Column, yAxis_Column, df):
-    x = np.array([xAxis_Column])
-    y = np.array([yAxis_Column])
-    print(df)
-    plt.scatter(x, y, s=10)
-    plt.xlabel('Cement')
-    plt.ylabel('Concrete Strength')
-    plt.title('Cement --> Concrete Strength')
-    plt.show()
 
 
-#ScatterPlot(xAxis_Column, yAxis_Column, df)
-
-
-
+    # just a bunch of calls to the functions in utilsStats.py
 def UtilsPrinter():
     print(xAxis_Column)
     print("----------------------------------------------------------------------------------------")
@@ -98,27 +84,11 @@ def UtilsPrinter():
 
 
 def test(df):
-    strengthIndex = (len(df.columns)-1)
-    data = df.iloc[:, strengthIndex]
-
-    mu, sigma = stats.norm.fit(data)
-
-    x = np.linspace(data.min(), data.max(), 100)
-
-    plt.hist(data, bins=30, density=True, alpha=0.6, label='Data Histogram') # Plot the histogram of the data
-
-    plt.plot(x, stats.norm.pdf(x, mu, sigma), 'r-', label='Fitted Normal PDF') # Plot the fitted normal PDF (prob density func)
-
-    plt.title(f'Histogram with Fitted Normal Distribution for Column: {strengthIndex}' )
-    plt.xlabel(df.columns[strengthIndex] if len(df.columns) > 9 else 'Column 9 Value') # Use column name if available
-    plt.ylabel('Density')
-    plt.legend()
-    plt.show()    
+    print()
 
 
 if __name__ == "__main__":
-    Distribution(df)
-    print("waht what waht?!")
+    DistributionPlot(df)
 
 
     #LinearRegression(xAxis_Column, yAxis_Column)

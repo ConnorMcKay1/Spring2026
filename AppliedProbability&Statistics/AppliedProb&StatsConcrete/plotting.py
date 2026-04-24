@@ -17,28 +17,91 @@ from scipy import stats
 from utilsStats import *
 
 
-def DistributionPlot(df, mu, sigma):
+''' LEGACY '''
+    ## This was for printing all of the REGRESSION LINES for all of the INGREDIENTS
+    # creates the window with all the X ingrediantes against output Y (strength)
+def LinearRegression_AllColumns(df):
+
+    y_col_name = df.columns[-1]
+    x_columns = df.columns[:-1]
+
+    num_plots = len(x_columns)
+
+    cols = 3
+    rows = (num_plots + cols - 1) // cols
+
+    fig, axes = plt.subplots(
+        rows,
+        cols,
+        figsize=(18, 6 * rows),
+        constrained_layout=True
+    )
+
+    axes = axes.flatten()
+
+    for i, col_name in enumerate(x_columns):
+        x = df[col_name]
+        y = df[y_col_name]
+
+        result = RegressionLine(x, y)
+
+        ax = axes[i]
+
+        ax.scatter(x, y)
+
+        slope = result.slope
+        intercept = result.intercept
+        ax.plot(x, slope * x + intercept, color='red')      # the regression line itself 
+
+        ax.set_title(col_name)
+        ax.set_xlabel(col_name)
+        ax.set_ylabel(y_col_name)
+
+    for j in range(num_plots, len(axes)):
+        fig.delaxes(axes[j])
+
+    plt.show()
+
+
+
+
+def DistributionPlot(df):
     print("plot the damn distributions!")
-    
-    
-  
-    x = np.linspace(data.min(), data.max(), 100)
 
-    plt.hist(data, bins=30, density=True, alpha=0.6, label='Data Histogram') # Plot the histogram of the data
+    num_plots = len(df.columns)
 
-    plt.plot(x, Distribution(x, mu, sigma), 'r-', label='Fitted Normal PDF') # Plot the fitted normal PDF (prob density func)
+    cols = 3
+    rows = (num_plots + cols - 1) // cols
 
-    plt.title(f'Histogram with Fitted Normal Distribution for Column: {strengthIndex}' )
-    plt.xlabel(df.columns[strengthIndex] if len(df.columns) > 9 else 'Column 9 Value') # Use column name if available
-    plt.ylabel('Density')
-    plt.legend()
-    plt.show()    
-  
-  
+    fig, axes = plt.subplots(
+        rows,
+        cols,
+        figsize=(18, 6 * rows),
+        constrained_layout=True
+    )
 
+    axes = axes.flatten()
 
+    for i, col_name in enumerate(df.columns):
+        ax = axes[i]
 
+        data = df[col_name].dropna()  # safer
 
-if __name__ == "__main__":
-    print("hop on the dot")
-    DistributionPlot()
+        mu, sigma = stats.norm.fit(data)
+
+        x = np.linspace(data.min(), data.max(), 100)
+
+        ax.hist(data, bins=30, density=True, alpha=0.6, label='Data Histogram')
+        ax.plot(x, stats.norm.pdf(x, mu, sigma), 'r-', label='Fitted Normal PDF')
+
+        ax.set_title(f'Column: {col_name}')
+        ax.set_xlabel(col_name)
+        ax.set_ylabel('Density')
+        ax.legend()
+
+    for j in range(num_plots, len(axes)):
+        fig.delaxes(axes[j])
+
+    fig.savefig("my_plot.png")
+    plt.show()
+
