@@ -2,6 +2,8 @@ import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
 from scipy import stats
+from scipy.io import arff
+
 
 '''
 
@@ -43,8 +45,9 @@ print("test test turnip \n")
 #----------------------------------------------------------------------------------------------------------------------------------
     # This is 'concrete_compresssive_strencth.csv --> (data_1)
 #dataFile = "C:\Users/cmcka/OneDrive/Desktop/Spring2026/AppliedProbability&Statistics/AppliedProb&StatsConcrete/data_1.csv"
+ 
     # This is 'concrete_resistance.csv  --> (data_2) --> this is the one with 10 columns and 2 differenct variables
-dataFile = "C:/Users/cmcka/OneDrive/Desktop/Spring2026/AppliedProbability&Statistics/AppliedProb&StatsConcrete/data_2.csv"
+#dataFile = "C:/Users/cmcka/OneDrive/Desktop/Spring2026/AppliedProbability&Statistics/AppliedProb&StatsConcrete/data_2.csv"
 
     # This is Dataset2 - Data.csv --> (data_3)
 #dataFile = "C:/Users/cmcka/OneDrive/Desktop/Spring2026/AppliedProbability&Statistics/AppliedProb&StatsConcrete/data_3.csv"
@@ -61,9 +64,7 @@ def DataReadIn(csvFile):
     yAxis_Column = df.iloc[:, 8].tolist()
     return xAxis_Column, yAxis_Column, df
 
-xAxis_Column, yAxis_Column, df = DataReadIn(dataFile)
-
-
+#xAxis_Column, yAxis_Column, df = DataReadIn(dataFile)
 
 
     # just a bunch of calls to the functions in utilsStats.py
@@ -83,12 +84,24 @@ def UtilsPrinter():
     Covariance(xAxis_Column, yAxis_Column)
 
 
-def test(df):
-    print()
+
+
+file = "C:/Users/cmcka/OneDrive/Desktop/Spring2026/AppliedProbability&Statistics/AppliedProb&StatsConcrete/data_4.arff"
+
+def test(file):
+
+    data, meta = arff.loadarff(file)
+
+    df = pd.DataFrame(data)
+
+    # Optional — only if needed
+    # df = df.applymap(lambda x: x.decode() if isinstance(x, bytes) else x)
+
+    df.to_csv("concrete.csv", index=False)
+
+    print("Conversion complete!")
+
 
 
 if __name__ == "__main__":
-    DistributionPlot(df)
-
-
-    #LinearRegression(xAxis_Column, yAxis_Column)
+    test(file)
