@@ -95,4 +95,4 @@ def test():
 
 if __name__ == "__main__":
     print("main runner")
-    print(MatrixTranspose(df))
+    ThetaFinder(df)
