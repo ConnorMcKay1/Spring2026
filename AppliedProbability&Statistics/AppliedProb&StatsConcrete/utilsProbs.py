@@ -85,7 +85,7 @@ def ThetaFinder(df):
     print("Epsilon (residuals):")
     print(epsilon)
     
-    return theta, epsilon
+    return theta, epsilon, y_hat
     
     
     
@@ -97,4 +97,8 @@ def Predict(X_new, theta):
     
     y_pred = np.matmul(X_new, theta)
     return y_pred
+
+
+
+
     

@@ -105,4 +105,45 @@ def DistributionPlot(df):
 
     #fig.savefig("my_plot.png")
     plt.show()
-
+    
+    
+    
+    
+def PlotDiagnostics(y, y_hat, epsilon):
+    y = y.flatten()
+    y_hat = y_hat.flatten()
+    epsilon = epsilon.flatten()
+    error_mag = np.abs(epsilon)
+    
+    fig, axs = plt.subplots(1, 3, figsize=(18,5))
+    
+    # predicted vs actual
+    axs[0].scatter(y, y_hat, alpha=0.7)
+    min_val = min(y.min(), y_hat.min())
+    max_val = max(y.max(), y_hat.max())
+    axs[0].plot([min_val, max_val], [min_val, max_val], 'r--')
+    axs[0].set_title("Predicted vs Actual")
+    axs[0].set_xlabel("Actual")
+    axs[0].set_ylabel("Predicted")
+    axs[0].grid(True)
+    
+    # residuals vs prediction
+    axs[1].scatter(y_hat, epsilon, alpha=0.7)
+    axs[1].axhline(0, color='red', linestyle='--')
+    axs[1].set_title("Residuals")
+    axs[1].set_xlabel("Predicted")
+    axs[1].set_ylabel("Error")
+    axs[1].grid(True)
+    
+    # error magnitude plot
+    sc = axs[2].scatter(y, y_hat, c=error_mag, cmap='viridis', alpha=0.8)
+    axs[2].plot([min_val, max_val], [min_val, max_val], 'r--')
+    axs[2].set_title("Error Magnitude")
+    axs[2].set_xlabel("Actual")
+    axs[2].set_ylabel("Predicted")
+    axs[2].grid(True)
+    
+    fig.colorbar(sc, ax=axs[2], label="|Error|")
+    
+    plt.tight_layout()
+    plt.show()

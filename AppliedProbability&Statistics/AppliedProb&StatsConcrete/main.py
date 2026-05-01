@@ -97,10 +97,16 @@ def test():
 if __name__ == "__main__":
     print("main runner")
     
-    theta, epsilon = ThetaFinder(df)
+    theta, epsilon, y_hat = ThetaFinder(df)
     
     x_new = np.array([[550, 0, 0, 165, 3.3, 584, 607, 7]])
     y_pred = Predict(x_new, theta)
 
     print("PREDICTION OF y:")
     print(y_pred)
+    
+    y = TargetVector(df)
+    PlotDiagnostics(y, y_hat, epsilon)
+    
+    
+    
