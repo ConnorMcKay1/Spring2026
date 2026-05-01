@@ -92,7 +92,15 @@ def test():
     print("Conversion complete!")
 
 
-
+# example from first line for data_1.csv
+# 550, 0, 0, 165, 3.3, 584, 607, 7, 49.71
 if __name__ == "__main__":
     print("main runner")
-    ThetaFinder(df)
+    
+    theta, epsilon = ThetaFinder(df)
+    
+    x_new = np.array([[550, 0, 0, 165, 3.3, 584, 607, 7]])
+    y_pred = Predict(x_new, theta)
+
+    print("PREDICTION OF y:")
+    print(y_pred)
