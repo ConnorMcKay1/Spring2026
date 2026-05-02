@@ -1,10 +1,23 @@
+
+
 body {
-    background-color: #78b1e4;
+    background-color: #78c2e4;
 }
 
-.test-box {
-    border: 3px solid green;
-    padding: 20px;
-    text-align: center;
-    font-weight: bold;
+
+.navbar { 
+    flex-wrap: nowrap !important;
+}
+
+h4 {
+    color: rgb(102, 102, 102);
+
+}
+
+
+/* below is stying for StatisticsToolbox.HTML */
+
+.text-center {
+    font-size: 30px;
+
 }
