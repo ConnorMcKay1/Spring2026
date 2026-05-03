@@ -1,4 +1,21 @@
-print("hello?!")
+import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+    # these are both 'unique' import variables for python lib imports
+import sympy as sym
+import scipy as sci
+
+from scipy import stats 
+#from scipy import [submodule]
+#. . . 
+
+
+# personal imports from local files
+from Structural import *
+
+
+
+print("   entering: EngineeringCalculatorMain.py")
 
 
 
@@ -32,3 +49,7 @@ Fluid Dynamics
 
 
 '''
+
+if __name__ == "__main__":
+    test = RectangularMomentOfInertia(6, 6)
+    print(test)
