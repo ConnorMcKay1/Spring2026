@@ -1,3 +1,5 @@
+import os
+
 import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
@@ -44,7 +46,7 @@ print("test test turnip \n")
 
 #----------------------------------------------------------------------------------------------------------------------------------
     # This is 'concrete_compresssive_strencth.csv --> (data_1)
-dataFile = "C:/Users/cmcka/OneDrive/Desktop/Spring2026/AppliedProbability&Statistics/AppliedProb&StatsConcrete/data_1.csv"
+#dataFile = "C:/Users/cmcka/OneDrive/Desktop/Spring2026/AppliedProbability&Statistics/AppliedProb&StatsConcrete/data_1.csv"
  
     # This is 'concrete_resistance.csv  --> (data_2) --> this is the one with 10 columns and 2 differenct variables
 #dataFile = "C:/Users/cmcka/OneDrive/Desktop/Spring2026/AppliedProbability&Statistics/AppliedProb&StatsConcrete/data_2.csv"
@@ -53,7 +55,7 @@ dataFile = "C:/Users/cmcka/OneDrive/Desktop/Spring2026/AppliedProbability&Statis
 #dataFile = "C:/Users/cmcka/OneDrive/Desktop/Spring2026/AppliedProbability&Statistics/AppliedProb&StatsConcrete/data_3.csv"
 
     # This is from OpenML --> data_4
-#dataFile = "C:/Users/cmcka/OneDrive/Desktop/Spring2026/AppliedProbability&Statistics/AppliedProb&StatsConcrete/data_4.csv"
+dataFile = "C:/Users/cmcka/OneDrive/Desktop/Spring2026/AppliedProbability&Statistics/AppliedProb&StatsConcrete/data_4.csv"
 
 #----------------------------------------------------------------------------------------------------------------------------------
 
@@ -94,12 +96,28 @@ def test():
 
 # example from first line for data_1.csv
 # 550, 0, 0, 165, 3.3, 584, 607, 7, 49.71
+# 385,0,165,148,6.05,702,729,7,18.53
+# 275,0,275,146,5.5,717,745,7,15.09
+# 165,0,385,172,4.4,728,757,7,6.34
+# 385,165,0,155,6.6,778,815,7,42.
+# 275,275,0,162,6.05,753,789,7,46.49
+# 165,385,0,172,4.4,695,729,7,38.28
 if __name__ == "__main__":
     print("main runner")
     
+    
+    # this is being added after presenting, it is
+    # just to add context for what is going on
+    file_name = os.path.basename(dataFile) 
+    numberOfRows = len(df)
+    numberOfColumns = len(df.columns)
+    print(f' number of rows in {file_name} : {numberOfRows} \n and the number of columns: {numberOfColumns}' ) 
+    
+    
+    
     theta, epsilon, y_hat = ThetaFinder(df)
     
-    x_new = np.array([[550, 0, 0, 165, 3.3, 584, 607, 7]])
+    x_new = np.array([[298.2,0.0,107.0,209.7,11.1,879.6,744.2,28.0]])
     y_pred = Predict(x_new, theta)
 
     print("PREDICTION OF y:")
